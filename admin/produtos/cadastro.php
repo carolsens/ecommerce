@@ -150,18 +150,12 @@ include('_functions_utils.inc.php');
 
 														$res = $mysqli->query($sql);
 
-
-													
-
 														while ($category = $res->fetch_object()) { ?>
 															 
 															 <option value="<?php echo $category->id; ?>"><?php echo $category->nome; ?></option>
 															 <?php
 
-														} ?>
-
-
-													
+														} ?>													
 												</select>
 											</div>
 										</div>

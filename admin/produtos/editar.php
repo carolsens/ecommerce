@@ -1,6 +1,6 @@
 <?php
 
-include('../protect.php');
+include('../includes/protect.php');
 include('../includes/conexao.php');
 include('_functions_utils.inc.php');
 
@@ -108,10 +108,9 @@ include('_functions_utils.inc.php');
 										$sql = "SELECT * FROM produto WHERE id=".$_REQUEST["id"];
 										$res = $mysqli->query($sql);
 										$product = $res->fetch_object();
-									
 									?>
 
-									<form action="crudproduto.php" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST">
+									<form action="_crudproduto.php" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST">
 										<input type="hidden" name="action" value="edit">
 										<input type="hidden" name="id" value="<?php print $product->id; ?>">
 										<div class="item form-group">
@@ -139,19 +138,38 @@ include('_functions_utils.inc.php');
 												</select>
 											</div>
 										</div>
+										<div class="item form-group">
+											<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Categoria <span class="required">*</span></label>
+											<div class="col-md-6 col-sm-6 ">
+												<select class="form-control" name="id_categoria" >
+													<option></option>
+													<?php
+														$sql = "SELECT * FROM categoria";
+
+														$res = $mysqli->query($sql);
+
+														while ($category = $res->fetch_object()) { ?>
+															 
+															 <option value="<?php echo $category->id; ?>" <?php if ($product->id_categoria == $category->id): ?>selected<?php endif;?>><?php echo $category->nome; ?></option>
+															 <?php
+
+														} ?>											
+												</select>
+											</div>
+										</div>
 
 										<div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Preço <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input type="text" id="preco" required="required" class="form-control" name="preco" value="<?php print $product->preco; ?>">
+												<input type="text" id="preco" required="required" class="form-control" name="preco" value="<?php print moneyFormat($product->preco); ?>">
 											</div>
 										</div>
 										<div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="precopromocional">Preço promocional
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input type="text" id="precopromocional" class="form-control" name="precopromocional" value="<?php print $product->precopromocional; ?>">
+												<input type="text" id="precopromocional" class="form-control" name="precopromocional" value="<?php print moneyFormat($product->precopromocional); ?>">
 											</div>
 										</div>
 										<div class="item form-group">

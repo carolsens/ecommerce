@@ -97,31 +97,70 @@ include('_functions_utils.inc.php')
 
 									$qtd = $res->num_rows;
 
-									if ($qtd > 0) {
+									if ($qtd > 0) { ?>
 
-									print "<table class='table table-hover'>";
-									print "<tr>";
-									print "<th>Nome</th>";
-									print "<th>Situação</th>";
-									
-									
-										while ($category = $res->fetch_object()) {
-											print "<tr>";
-											print "<td>" . $category->nome . "</td>";
-											print "<td>" . categoriaAtivoLabel($category->ativo) . "</td>";
-											print "<td> 
-											<button onclick=\"if(confirm('Tem certeza que deseja editar?')){location.href='editar.php?action=edit&id=" . $category->id . "';}else{false;}\" class='btn btn-success'>Editar</button>
-											<button onclick=\"if(confirm('Tem certeza que deseja excluir?')){location.href='_crudcategory.php?action=delet&id=" . $category->id . "';}else{false;}\" class='btn btn-danger'>Excluir</button>
-											</td>";
-										}
 
-										print "</table>";
-									} else {
-										print "<tr>";
-										print "<td>Nenhuma categoria cadastrada</td>";
+										<div class="col-md-6 col-sm-6  ">
+										<div class="x_panel">
+										  <div class="x_title">
+											<h2>Categorias <small>Categorias cadastradas</small></h2>
+											<ul class="nav navbar-right panel_toolbox">
+											  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+											  </li>
+											  <li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+												<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+													<a class="dropdown-item" href="#">Settings 1</a>
+													<a class="dropdown-item" href="#">Settings 2</a>
+												  </div>
+											  </li>
+											  <li><a class="close-link"><i class="fa fa-close"></i></a>
+											  </li>
+											</ul>
+											<div class="clearfix"></div>
+										  </div>
+										  <div class="x_content">
+											<table class="table table-hover">
+											  <thead>
+												<tr>									
+													<th>Nome</th>
+													<th>Situação</th>
+													<th>Ação</th>
+												</tr>
+											  </thead>
+											  <tbody>
+
+											  <?php while ($category = $res->fetch_object()) { ?>
+												<tr>
+													<td> <?php echo $category->nome; ?> </td>
+													<td> <?php echo categoriaAtivoLabel($category->ativo)?> </td>
+													
+													<td> 
+													<button class='btn btn-success' onclick="if(confirm('Tem certeza que deseja editar?')){location.href='editar.php?action=edit&id=<?= $category->id ?>';}else{false;}">Editar</button>
+													<button class='btn btn-danger' onclick="if(confirm('Tem certeza que deseja excluir?')){location.href='_crudcategory.php?action=delet&id=<?= $category->id ?>';}else{false;}">Excluir</button>
+													</td>
+												</tr>	
+											  </tbody>
+
+											  <?php } ?>
+											</table>
+						
+										  </div>
+										</div>
+									  </div>
+
+											
+										<?php
+									
+									} else { ?>
+										<tr>
+										<td>Nenhum produto cadastrado</td>
+									<?php
 									}
 
 									?>
+
+									
 							</div>
 						</div>
 					</div>

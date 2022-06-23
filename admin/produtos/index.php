@@ -90,45 +90,82 @@ include('_functions_utils.inc.php');
 									<a class="btn btn-secondary" href="cadastro.php" role="button">Cadastrar novo produto</a>
 								</div>
 								<?php
-									$sql = "SELECT * FROM produto";
+									$sql = "SELECT produto.*, categoria.nome as nome_categoria FROM produto
+									LEFT JOIN categoria ON (produto.id_categoria = categoria.id)";
 
 									$res = $mysqli->query($sql);
-
 									$qtd = $res->num_rows;
 
-									if ($qtd > 0) {
+									if ($qtd > 0) { ?>
 
-									print "<table class='table table-hover'>";
-									print "<tr>";
-									print "<th>Nome</th>";
-									print "<th>Descrição</th>";
-									print "<th>Localização na página</th>";
-									print "<th>Preço</th>";
-									print "<th>Preço promocional</th>";
-									print "<th>Tag</th>";
-									print "<th>Imagem</th>";
-									print "<th>Ação</th>";
-									
-									
-										while ($product = $res->fetch_object()) {
-											print "<tr>";
-											print "<td>" . $product->nome . "</td>";
-											print "<td>" . $product->descricao . "</td>";
-											print "<td>" . localPaginaInicialLabel($product->local_pagina_inicial) . "</td>";
-											print "<td>R$ " . moneyFormat($product->preco) . "</td>";
-											print "<td>R$ " . $product->precopromocional . "</td>";
-											print "<td>" . $product->tarja . "</td>";
-											print "<td> <img height='50' src= ". $product->foto . " > </td>";
-											print "<td> 
-											<button onclick=\"if(confirm('Tem certeza que deseja editar?')){location.href='editar.php?action=edit&id=" . $product->id . "';}else{false;}\" class='btn btn-success'>Editar</button>
-											<button onclick=\"if(confirm('Tem certeza que deseja excluir?')){location.href='_crudproduto.php?action=delet&id=" . $product->id . "';}else{false;}\" class='btn btn-danger'>Excluir</button>
-											</td>";
-										}
 
-										print "</table>";
-									} else {
-										print "<tr>";
-										print "<td>Nenhum produto cadastrado</td>";
+										<div class="col-md-12 col-sm-12  ">
+										<div class="x_panel">
+										  <div class="x_title">
+											<h2>Produtos <small>Produtos cadastrados</small></h2>
+											<ul class="nav navbar-right panel_toolbox">
+											  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+											  </li>
+											  <li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+												<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+													<a class="dropdown-item" href="#">Settings 1</a>
+													<a class="dropdown-item" href="#">Settings 2</a>
+												  </div>
+											  </li>
+											  <li><a class="close-link"><i class="fa fa-close"></i></a>
+											  </li>
+											</ul>
+											<div class="clearfix"></div>
+										  </div>
+										  <div class="x_content">
+											<table class="table table-hover">
+											  <thead>
+												<tr>									
+													<th>Nome</th>
+													<th>Descrição</th>
+													<th>Categoria</th>
+													<th>Localização na página</th>
+													<th>Preço</th>
+													<th>Preço promocional</th>
+													<th>Tag</th>
+													<th>Imagem</th>
+													<th>Ação</th>
+												</tr>
+											  </thead>
+											  <tbody>
+
+											  <?php while ($product = $res->fetch_object()) { ?>
+												<tr>
+													<td> <?php echo $product->nome; ?> </td>
+													<td> <?php echo $product->descricao ?> </td>
+													<td> <?php echo $product->nome_categoria ?> </td>
+													<td> <?php echo localPaginaInicialLabel($product->local_pagina_inicial) ?> </td>
+													<td>R$ <?php echo moneyFormat($product->preco) ?> </td>
+													<td> <?php $product->precopromocional > 0 ? print "R$ " . moneyFormat($product->precopromocional)  : ""  ?> </td>
+													<td> <?php echo $product->tarja ?> </td>
+													<td> <img height='50' src= "<?php echo $product->foto ?>"> </td>
+													<td> 
+													<button class='btn btn-success' onclick="if(confirm('Tem certeza que deseja editar?')){location.href='editar.php?action=edit&id=<?= $product->id ?>';}else{false;}">Editar</button>
+													<button class='btn btn-danger' onclick="if(confirm('Tem certeza que deseja excluir?')){location.href='_crudproduto.php?action=delet&id=<?= $product->id ?>';}else{false;}">Excluir</button>
+													</td>
+												</tr>	
+											  </tbody>
+
+											  <?php } ?>
+											</table>
+						
+										  </div>
+										</div>
+									  </div>
+
+											
+										<?php
+									
+									} else { ?>
+										<tr>
+										<td>Nenhum produto cadastrado</td>
+									<?php
 									}
 
 									?>
