@@ -2,12 +2,15 @@
 
 function localPaginaInicialLabel($local_pagina_inicial) {
          switch ($local_pagina_inicial) {
-            case 'carouselnews':
+            case 'carouselone':
                   return 'Carrossel News';
-            case 'carouselsale':
+            break;
+            case 'carouseltwo':
                   return 'Carrossel Promoções';
-            case 'carouselorder':
+            break;
+            case 'carouselthree':
                   return 'Carrossel Mais Vendidos';
+            break;
 
        }
 }

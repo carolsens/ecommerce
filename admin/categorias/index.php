@@ -2,7 +2,8 @@
 
 include('../includes/protect.php');
 include('../includes/conexao.php');
-include('_functions_utils.inc.php');
+include('_functions_utils.inc.php')
+
 
 ?>
 
@@ -64,7 +65,7 @@ include('_functions_utils.inc.php');
 				<div class="">
 					<div class="page-title">
 						<div class="title_left">
-							<h3>Produtos</h3>
+							<h3>Categorias</h3>
 						</div>
 						<div class="title_right">
 							<div class="col-md-5 col-sm-5  form-group pull-right top_search">
@@ -86,11 +87,11 @@ include('_functions_utils.inc.php');
 						<div class="col-md-12 col-sm-12 ">
 							<div class="x_panel">
 								<div class="x_title">
-									<h2>Produtos cadastrados <small></small></h2>
-									<a class="btn btn-secondary" href="cadastro.php" role="button">Cadastrar novo produto</a>
+									<h2>Categorias cadastradas <small></small></h2>
+									<a class="btn btn-secondary" href="cadastro.php" role="button">Cadastrar nova categoria</a>
 								</div>
 								<?php
-									$sql = "SELECT * FROM produto";
+									$sql = "SELECT * FROM categoria";
 
 									$res = $mysqli->query($sql);
 
@@ -101,34 +102,23 @@ include('_functions_utils.inc.php');
 									print "<table class='table table-hover'>";
 									print "<tr>";
 									print "<th>Nome</th>";
-									print "<th>Descrição</th>";
-									print "<th>Localização na página</th>";
-									print "<th>Preço</th>";
-									print "<th>Preço promocional</th>";
-									print "<th>Tag</th>";
-									print "<th>Imagem</th>";
-									print "<th>Ação</th>";
+									print "<th>Situação</th>";
 									
 									
-										while ($product = $res->fetch_object()) {
+										while ($category = $res->fetch_object()) {
 											print "<tr>";
-											print "<td>" . $product->nome . "</td>";
-											print "<td>" . $product->descricao . "</td>";
-											print "<td>" . localPaginaInicialLabel($product->local_pagina_inicial) . "</td>";
-											print "<td>R$ " . moneyFormat($product->preco) . "</td>";
-											print "<td>R$ " . $product->precopromocional . "</td>";
-											print "<td>" . $product->tarja . "</td>";
-											print "<td> <img height='50' src= ". $product->foto . " > </td>";
+											print "<td>" . $category->nome . "</td>";
+											print "<td>" . categoriaAtivoLabel($category->ativo) . "</td>";
 											print "<td> 
-											<button onclick=\"if(confirm('Tem certeza que deseja editar?')){location.href='editar.php?action=edit&id=" . $product->id . "';}else{false;}\" class='btn btn-success'>Editar</button>
-											<button onclick=\"if(confirm('Tem certeza que deseja excluir?')){location.href='_crudproduto.php?action=delet&id=" . $product->id . "';}else{false;}\" class='btn btn-danger'>Excluir</button>
+											<button onclick=\"if(confirm('Tem certeza que deseja editar?')){location.href='editar.php?action=edit&id=" . $category->id . "';}else{false;}\" class='btn btn-success'>Editar</button>
+											<button onclick=\"if(confirm('Tem certeza que deseja excluir?')){location.href='_crudcategory.php?action=delet&id=" . $category->id . "';}else{false;}\" class='btn btn-danger'>Excluir</button>
 											</td>";
 										}
 
 										print "</table>";
 									} else {
 										print "<tr>";
-										print "<td>Nenhum produto cadastrado</td>";
+										print "<td>Nenhuma categoria cadastrada</td>";
 									}
 
 									?>

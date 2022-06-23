@@ -1,8 +1,10 @@
 <?php
 
-include('../protect.php');
+include('../includes/protect.php');
 include('../includes/conexao.php');
 include('_functions_utils.inc.php');
+
+
 
 ?>
 
@@ -64,7 +66,7 @@ include('_functions_utils.inc.php');
 				<div class="">
 					<div class="page-title">
 						<div class="title_left">
-							<h3>Edição de produtos</h3>
+							<h3>Cadastro de produtos</h3>
 						</div>
 
 						<div class="title_right">
@@ -103,69 +105,29 @@ include('_functions_utils.inc.php');
 								</div>
 								<div class="x_content">
 									<br />
-
-									<?php 
-										$sql = "SELECT * FROM produto WHERE id=".$_REQUEST["id"];
-										$res = $mysqli->query($sql);
-										$product = $res->fetch_object();
-									
-									?>
-
-									<form action="crudproduto.php" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST">
-										<input type="hidden" name="action" value="edit">
-										<input type="hidden" name="id" value="<?php print $product->id; ?>">
+									<form action="_crudcategory.php" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"   enctype="multipart/form-data" method="POST">
+										<input type="hidden" name="action" value="create">
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nome <span class="required">*</span>
-											</label>										
-											<div class="col-md-6 col-sm-6 ">
-												<input type="text" id="first-name" required="required" class="form-control" name="nome" value="<?php print $product->nome; ?>">
-											</div>
-										</div>
-										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Descrição <span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Nome <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input type="text" id="last-name" required="required" class="form-control" name="descricao" value="<?php print $product->descricao; ?>">
+												<input type="text" id="name" required="required" class="form-control" name="nome" >
 											</div>
 										</div>
 										<div class="item form-group">
-											<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Localização no site <span class="required">*</span></label>
+											<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Situação</label>
 											<div class="col-md-6 col-sm-6 ">
-												<select class="form-control" name="local_pagina_inicial" >
+												<select class="form-control" name="ativo">
 													<option></option>
-													<option value="carouselone" <?php if($product->local_pagina_inicial == 'carouselone'): ?>selected<?php endif; ?>>Carrossel News</option>
-													<option value="carouselstwo" <?php if($product->local_pagina_inicial == 'carouseltwo'): ?>selected<?php endif; ?>>Carrossel Promoções</option>
-													<option value="carouselthree" <?php if($product->local_pagina_inicial == 'carouselthree'): ?>selected<?php endif; ?>>Carrossel Mais Vendidos</option>											
+													<option value="1">Ativo</option>
+													<option value="0">Inativo</option>
 												</select>
 											</div>
 										</div>
-
-										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Preço <span class="required">*</span>
-											</label>
-											<div class="col-md-6 col-sm-6 ">
-												<input type="text" id="preco" required="required" class="form-control" name="preco" value="<?php print $product->preco; ?>">
-											</div>
-										</div>
-										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="precopromocional">Preço promocional
-											</label>
-											<div class="col-md-6 col-sm-6 ">
-												<input type="text" id="precopromocional" class="form-control" name="precopromocional" value="<?php print $product->precopromocional; ?>">
-											</div>
-										</div>
-										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Tag</label>
-											<div class="col-md-6 col-sm-6 ">
-												<input type="text" id="tag" class="form-control" name="tarja" value="<?php print $product->tarja; ?>" >
-											</div>
-										</div>
-
-										
-
 										<div class="ln_solid"></div>
 										<div class="item form-group">
 											<div class="col-md-6 col-sm-6 offset-md-3">
+												<button class="btn btn-primary" type="reset">Limpar</button>
 												<button type="submit" class="btn btn-success">Enviar</button>
 											</div>
 										</div>

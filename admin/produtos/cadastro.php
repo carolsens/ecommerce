@@ -106,7 +106,7 @@ include('_functions_utils.inc.php');
 								<div class="x_content">
 									<br />
 									<form action="crudproduto.php" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"   enctype="multipart/form-data" method="POST">
-										<input type="hidden" name="action" value="creat">
+										<input type="hidden" name="action" value="create">
 										<div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nome <span class="required">*</span>
 											</label>
@@ -133,9 +133,9 @@ include('_functions_utils.inc.php');
 											<div class="col-md-6 col-sm-6 ">
 												<select class="form-control" name="local_pagina_inicial">
 													<option></option>
-													<option value="carouselnews">Carrossel News</option>
-													<option value="carouselsale">Carrossel Promoções</option>
-													<option value="carouselorder">Carrossel Mais Vendidos</option>
+													<option value="carouselone">Carrossel News</option>
+													<option value="carouseltwo">Carrossel Promoções</option>
+													<option value="carouselthree">Carrossel Mais Vendidos</option>
 												</select>
 											</div>
 										</div>
@@ -153,9 +153,9 @@ include('_functions_utils.inc.php');
 
 													
 
-														while ($categoria = $res->fetch_object()) { ?>
+														while ($category = $res->fetch_object()) { ?>
 															 
-															 <option value="<?php echo $categoria->id; ?>"><?php echo $categoria->nome; ?></option>
+															 <option value="<?php echo $category->id; ?>"><?php echo $category->nome; ?></option>
 															 <?php
 
 														} ?>

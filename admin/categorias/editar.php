@@ -1,6 +1,6 @@
 <?php
 
-include('../protect.php');
+include('../includes/protect.php');
 include('../includes/conexao.php');
 include('_functions_utils.inc.php');
 
@@ -16,7 +16,7 @@ include('_functions_utils.inc.php');
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Cadastro de produto</title>
+	<title>Cadastro de categorias</title>
 
 	<!-- Bootstrap -->
 	<link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -64,7 +64,7 @@ include('_functions_utils.inc.php');
 				<div class="">
 					<div class="page-title">
 						<div class="title_left">
-							<h3>Edição de produtos</h3>
+							<h3>Edição de categorias</h3>
 						</div>
 
 						<div class="title_right">
@@ -83,7 +83,7 @@ include('_functions_utils.inc.php');
 						<div class="col-md-12 col-sm-12 ">
 							<div class="x_panel">
 								<div class="x_title">
-									<h2>Cadastro de produto <small>aqui você irá cadastrar os dados de cada produto</small></h2>
+									<h2>Cadastro de categorias <small>aqui você irá editas os dados de cada categoria</small></h2>
 									<ul class="nav navbar-right panel_toolbox">
 										<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 										</li>
@@ -105,61 +105,36 @@ include('_functions_utils.inc.php');
 									<br />
 
 									<?php 
-										$sql = "SELECT * FROM produto WHERE id=".$_REQUEST["id"];
+										$sql = "SELECT * FROM categoria WHERE id=".$_REQUEST["id"];
 										$res = $mysqli->query($sql);
-										$product = $res->fetch_object();
+										$category = $res->fetch_object();
 									
 									?>
 
-									<form action="crudproduto.php" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST">
+									<form action="_crucategory.php" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST">
 										<input type="hidden" name="action" value="edit">
-										<input type="hidden" name="id" value="<?php print $product->id; ?>">
+										<input type="hidden" name="id" value="<?php print $category->id; ?>">
 										<div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nome <span class="required">*</span>
 											</label>										
 											<div class="col-md-6 col-sm-6 ">
-												<input type="text" id="first-name" required="required" class="form-control" name="nome" value="<?php print $product->nome; ?>">
+												<input type="text" id="first-name" required="required" class="form-control" name="nome" value="<?php print $category->nome; ?>">
 											</div>
 										</div>
+										
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Descrição <span class="required">*</span>
-											</label>
+											<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Situação<span class="required">*</span></label>
 											<div class="col-md-6 col-sm-6 ">
-												<input type="text" id="last-name" required="required" class="form-control" name="descricao" value="<?php print $product->descricao; ?>">
-											</div>
-										</div>
-										<div class="item form-group">
-											<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Localização no site <span class="required">*</span></label>
-											<div class="col-md-6 col-sm-6 ">
-												<select class="form-control" name="local_pagina_inicial" >
+												<select class="form-control" name="ativo" >
 													<option></option>
-													<option value="carouselone" <?php if($product->local_pagina_inicial == 'carouselone'): ?>selected<?php endif; ?>>Carrossel News</option>
-													<option value="carouselstwo" <?php if($product->local_pagina_inicial == 'carouseltwo'): ?>selected<?php endif; ?>>Carrossel Promoções</option>
-													<option value="carouselthree" <?php if($product->local_pagina_inicial == 'carouselthree'): ?>selected<?php endif; ?>>Carrossel Mais Vendidos</option>											
+													<option value="1" <?php if($category->ativo == '1'): ?>selected<?php endif; ?>>Ativo</option>
+													<option value="0" <?php if($category->ativo == '0'): ?>selected<?php endif; ?>>Inativo</option>
+																						
 												</select>
 											</div>
 										</div>
 
-										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Preço <span class="required">*</span>
-											</label>
-											<div class="col-md-6 col-sm-6 ">
-												<input type="text" id="preco" required="required" class="form-control" name="preco" value="<?php print $product->preco; ?>">
-											</div>
-										</div>
-										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="precopromocional">Preço promocional
-											</label>
-											<div class="col-md-6 col-sm-6 ">
-												<input type="text" id="precopromocional" class="form-control" name="precopromocional" value="<?php print $product->precopromocional; ?>">
-											</div>
-										</div>
-										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Tag</label>
-											<div class="col-md-6 col-sm-6 ">
-												<input type="text" id="tag" class="form-control" name="tarja" value="<?php print $product->tarja; ?>" >
-											</div>
-										</div>
+										
 
 										
 

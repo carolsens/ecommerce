@@ -1,10 +1,10 @@
 <?php
 
-include('includes/conexao.php');
+include('../includes/conexao.php');
 
 
 switch ($_REQUEST["action"]) {
-    case 'creat':
+    case 'create':
         $nome = $_POST["nome"];
         $descricao = $_POST["descricao"];
         $local_pagina_inicial = $_POST["local_pagina_inicial"];
@@ -19,7 +19,7 @@ switch ($_REQUEST["action"]) {
                 die("Arquivo muito grande! Tam máx 6MB");
             }
                 
-            $pasta = "../assets/produto/"; 
+            $pasta = "../../assets/produto/"; 
             $fotonome = $fotoarquivo['name']; 
             $fotonomealterado = uniqid();
             $extensaoimg = strtolower(pathinfo($fotonome,PATHINFO_EXTENSION)); 
@@ -41,10 +41,10 @@ switch ($_REQUEST["action"]) {
    
         if($res==true){
             print "<script>alert('Cadastro realizado com sucesso');</script>";
-            print "<script>location.href='form.php';</script>";
+            print "<script>location.href='index.php';</script>";
         }else{
             print "<script>alert('Não foi possível realizar o cadastro');</script>";
-            print "<script>location.href='form.php';</script>";
+            print "<script>location.href='index.php';</script>";
         }
         break;
 
@@ -71,10 +71,10 @@ switch ($_REQUEST["action"]) {
 
         if($res==true){
             print "<script>alert('Cadastro editado com sucesso');</script>";
-            print "<script>location.href='form.php';</script>";
+            print "<script>location.href='index.php';</script>";
         }else{
             print "<script>alert('Não foi possível realizar a edição');</script>";
-            print "<script>location.href='form.php';</script>";
+            print "<script>location.href='index.php';</script>";
         }
 
         break;
@@ -85,10 +85,10 @@ switch ($_REQUEST["action"]) {
 
         if($res==true){
             print "<script>alert('Item excluído com sucesso');</script>";
-            print "<script>location.href='form.php';</script>";
+            print "<script>location.href='index.php';</script>";
         }else{
             print "<script>Alert('Não foi possível realizar a exclusão');</script>";
-            print "<script>location.href='form.php';</script>";
+            print "<script>location.href='index.php';</script>";
         }
         break;
 
