@@ -107,8 +107,7 @@ include('_functions_utils.inc.php');
 									<?php 
 										$sql = "SELECT * FROM categoria WHERE id=".$_REQUEST["id"];
 										$res = $mysqli->query($sql);
-										$category = $res->fetch_object();
-									
+										$category = $res->fetch_object();	
 									?>
 
 									<form action="_crucategory.php" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST">
@@ -128,8 +127,7 @@ include('_functions_utils.inc.php');
 												<select class="form-control" name="ativo" >
 													<option></option>
 													<option value="1" <?php if($category->ativo == '1'): ?>selected<?php endif; ?>>Ativo</option>
-													<option value="0" <?php if($category->ativo == '0'): ?>selected<?php endif; ?>>Inativo</option>
-																						
+													<option value="0" <?php if($category->ativo == '0'): ?>selected<?php endif; ?>>Inativo</option>									
 												</select>
 											</div>
 										</div>
