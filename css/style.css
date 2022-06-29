@@ -286,6 +286,7 @@ h6 {
     padding-right: 20px;
     padding-top: 4px;
     padding-bottom: 4px;
+    text-transform: uppercase;
 }
 
 .tag2 {
@@ -300,6 +301,7 @@ h6 {
     padding-right: 9px;
     padding-top: 4px;
     padding-bottom: 4px;
+    text-transform: uppercase;
 }
 
 #navbarbannercategorias {
@@ -637,6 +639,10 @@ li {
 .imagensresponsivo {
     max-width: 362px;
     object-fit: contain;
+}
+
+#logoEmpresa {
+    max-width: 75px;
 }
 
 @media (max-width: 850px) {

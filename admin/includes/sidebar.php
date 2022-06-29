@@ -10,7 +10,7 @@ include('constantes.php');
         <img src="images/img.jpg" alt="..." class="img-circle profile_img">
     </div>
     <div class="profile_info">
-        <span>Welcome,</span>
+        <span>Bem-vindo</span>
         <h2><?php echo $_SESSION['nome']; ?></h2>
     </div>
 </div>
@@ -23,16 +23,14 @@ include('constantes.php');
     <div class="menu_section">
         <h3>General</h3>
         <ul class="nav side-menu">
-            <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+            <li><a href="<?= BASE_URL_ADMIN ?>/index.php"><i class="fa fa-home"></i> Home</a>
             </li>
             <li><a><i class="fa fa-edit"></i> Cadastros <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="<?= BASE_URL_ADMIN ?>/produtos/index.php">Produtos</a></li>
                     <li><a href="<?= BASE_URL_ADMIN ?>/categorias/index.php">Categorias</a></li>
                 </ul>
-            </li>
-           
-           
+            </li>           
         </ul>
     </div>
     

@@ -17,6 +17,11 @@ include('includes/protect.php');
 
   <title>Gentelella Alela! | </title>
 
+
+  
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+
   <!-- Bootstrap -->
   <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome -->

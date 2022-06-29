@@ -1,7 +1,8 @@
 <?php
 
-include('./admin/includes/conexao.php');
-include('./admin/_functions_utils.inc.php');
+include('admin/includes/conexao.php');
+include('admin/produtos/_functions_utils.inc.php');
+
 
 ?>
 
@@ -11,17 +12,17 @@ include('./admin/_functions_utils.inc.php');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Petit Rosè</title>
+    <title>Carolina Sens</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Raleway:ital,wght@0,400;0,700;0,800;1,800&display=swap" rel="stylesheet">
 
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="../owlcarousel/dist/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="../owlcarousel/dist/assets//owl.theme.default.min.css">
+    <link rel="stylesheet" href="owlcarousel/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="owlcarousel/dist/assets/owl.theme.default.min.css">
 
 </head>
 
@@ -99,11 +100,11 @@ include('./admin/_functions_utils.inc.php');
                     </form>
                 </div>
                 <div class="col">
-                    <img id="logo" src="../imagens/logo-petit-rose.png">
+                    <img id="logo" src="imagens/logofinal.png">
                 </div>
                 <div class="col">
                     <div class="navbar-logo-carrinho">
-                        <a href="./carrinho.html"> <img id="carrinho" src="../imagens/shopping-bag.svg"> </a>
+                        <a href="./carrinho.html"> <img id="carrinho" src="imagens/shopping-bag.svg"> </a>
                     </div>
                 </div>
             </div>
@@ -114,11 +115,11 @@ include('./admin/_functions_utils.inc.php');
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <img id="logo-mobile" class="img-fluid" src="../imagens/logo-petit-rose.png">
+                    <img id="logo-mobile" class="img-fluid" src="imagens/logofinal.png">
                 </div>
                 <div class="col">
                     <div class="iconesOpcao">
-                        <a href="./carrinho.html"> <img id="carrinho-mobile" src="../imagens/shopping-bag.svg"> </a>
+                        <a href="./carrinho.html"> <img id="carrinho-mobile" src="imagens/shopping-bag.svg"> </a>
                         <a href="./minhaconta.html"> <svg id="minhaconta-mobile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                 <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
                                 <path d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z" />
@@ -223,17 +224,17 @@ include('./admin/_functions_utils.inc.php');
             <div class="row">
                 <div class="col">
                     <div class="navbar-beneficio1">
-                        <img src="../imagens/beneficio1.png">
+                        <img src="imagens/beneficio1.png">
                     </div>
                 </div>
                 <div class="col">
                     <div class="navbar-beneficio2">
-                        <img src="../imagens/beneficio2.png">
+                        <img src="imagens/beneficio2.png">
                     </div>
                 </div>
                 <div class="col">
                     <div class="navbar-beneficio3">
-                        <img src="../imagens/beneficio3.png">
+                        <img src="imagens/beneficio3.png">
                     </div>
                 </div>
             </div>
@@ -246,13 +247,13 @@ include('./admin/_functions_utils.inc.php');
         <div class="container">
             <div class="owl-carousel owl-theme carrosel-beneficios">
                 <div class="item">
-                    <img class="img_carousel" src="../imagens/beneficio1.png">
+                    <img class="img_carousel" src="imagens/beneficio1.png">
                 </div>
                 <div class="item">
-                    <img class="img_carousel" src="../imagens/beneficio2.png">
+                    <img class="img_carousel" src="imagens/beneficio2.png">
                 </div>
                 <div class="item">
-                    <img class="img_carousel" src="../imagens/beneficio3.png">
+                    <img class="img_carousel" src="imagens/beneficio3.png">
                 </div>
             </div>
         </div>
@@ -266,11 +267,11 @@ include('./admin/_functions_utils.inc.php');
     <div id="bannerprincipal">
         <div class="container-fluid">
             <div class="main-image-container">
-                <img class="img-fluid" src="../imagens/banner01.png">
+                <img class="img-fluid" src="imagens/banner01.png">
             </div>
 
             <div class="navbarfimbannerprincipal">
-                <img class="img-fluid imagemfimbanner" src="../imagens/barratroca.PNG">
+                <img class="img-fluid imagemfimbanner" src="imagens/barratroca.PNG">
             </div>
 
         </div>
@@ -281,7 +282,7 @@ include('./admin/_functions_utils.inc.php');
             <div class="row">
                 <div class="col-xl-4 col-md-12 organizacao-categorias">
 
-                    <a class="imagenscategorias" href="./"> <img class="img-fluid" src="../imagens/imagem1.PNG">
+                    <a class="imagenscategorias" href="./"> <img class="img-fluid" src="imagens/imagem1.PNG">
 
                         <div class="sombra">
                             <div class="destaque-imagem">CONJUNTOS</div>
@@ -292,25 +293,26 @@ include('./admin/_functions_utils.inc.php');
                 <div class="col-xl-4 col-md-12">
                     <div style="margin-bottom: 27px">
                         <a class="imagenscategorias organizacao-categorias" href="./">
-                            <img id="navbarcatimagmeio" class="img-fluid" src="../imagens/imagem3.PNG">
-                            <div class="destaque-imagem">SAPATOS</div>
+                            <img id="navbarcatimagmeio" class="img-fluid" src="imagens/imagem3.PNG">
+                            <div class="sombra">
+                                <div class="destaque-imagem">SAPATOS</div>
+                            </div>
                         </a>
                     </div>
                     <div>
                         <a class="imagenscategorias organizacao-categorias" href="./">
-                            <img class="img-fluid imagenscategorias" src="../imagens/imagem2.PNG">
-                            <div class="destaque-imagem">ACESSÓRIOS</div>
+                            <img class="img-fluid imagenscategorias" src="imagens/imagem2.PNG">
+                            <div class="sombra">
+                                <div class="destaque-imagem">ACESSÓRIOS</div>
+                            </div>
                         </a>
                     </div>
                 </div>
-
-
-
-
-
                 <div class="col-xl-4 col-md-12 organizacao-categorias">
-                    <a class="imagenscategorias" href="./"> <img class="img-fluid imagenscategorias" src="../imagens/imagem4.PNG">
-                        <div class="destaque-imagem">PROMOÇÕES</div>
+                    <a class="imagenscategorias" href="./"> <img class="img-fluid imagenscategorias" src="imagens/imagem4.PNG">
+                        <div class="sombra">
+                            <div class="destaque-imagem">PROMOÇÕES</div>
+                        </div>
                     </a>
                 </div>
             </div>
@@ -325,7 +327,7 @@ include('./admin/_functions_utils.inc.php');
         <div class="container">
             <div class="owl-carousel owl-theme carrosel-proutos">
 
-                <?php $sql = "SELECT * FROM produto WHERE local_pagina_inicial = 'carouselnews';";
+                <?php $sql = "SELECT * FROM produto WHERE local_pagina_inicial = 'carouselone';";
 
                 $products = $mysqli->query($sql);
 
@@ -351,7 +353,7 @@ include('./admin/_functions_utils.inc.php');
     <div id="bannersecundario">
         <div class="container">
             <div class="row">
-                <img src="../imagens/banner02.PNG">
+                <img src="imagens/banner02.PNG">
             </div>
         </div>
     </div>
@@ -364,7 +366,7 @@ include('./admin/_functions_utils.inc.php');
         <div class="container">
             <div class="owl-carousel owl-theme carrosel-proutos">
 
-                <?php $sql = "SELECT * FROM produto WHERE local_pagina_inicial = 'carouselsale';";
+                <?php $sql = "SELECT * FROM produto WHERE local_pagina_inicial = 'carouseltwo';";
 
                 $products = $mysqli->query($sql);
 
@@ -395,7 +397,7 @@ include('./admin/_functions_utils.inc.php');
     <div id="carousel3">
         <div class="container">
             <div class="owl-carousel owl-theme carrosel-proutos">
-                <?php $sql = "SELECT * FROM produto WHERE local_pagina_inicial = 'carouselorder';";
+                <?php $sql = "SELECT * FROM produto WHERE local_pagina_inicial = 'carouselthree';";
 
                 $products = $mysqli->query($sql);
 
@@ -430,7 +432,7 @@ include('./admin/_functions_utils.inc.php');
                 <span class="titulo1">SIGA-NOS NO INSTAGRAM</span>
             </div>
             <div class="texto_instagram">
-                <span>Acompanhe todas as novidades em nosso instagram @amopetitrose</span>
+                <span>Acompanhe todas as novidades em nosso instagram @instagram</span>
             </div>
         </div>
     </div>
@@ -440,24 +442,24 @@ include('./admin/_functions_utils.inc.php');
         <div class="container">
             <div class="navbarimginstragam1 row">
                 <div class="col">
-                    <a hef=""> <img class="img-fluid" src="../imagens/imagem17.PNG"></a>
+                    <a hef=""> <img class="img-fluid" src="imagens/imagem17.PNG"></a>
                 </div>
                 <div class="col">
-                    <a hef=""> <img class="img-fluid" src="../imagens/imagem18.PNG"></a>
+                    <a hef=""> <img class="img-fluid" src="imagens/imagem18.PNG"></a>
                 </div>
                 <div class="col">
-                    <a hef=""> <img class="img-fluid" src="../imagens/imagem19.PNG"></a>
+                    <a hef=""> <img class="img-fluid" src="imagens/imagem19.PNG"></a>
                 </div>
             </div>
             <div class="navbarimginstragam2 row">
                 <div class="col">
-                    <a hef=""> <img class="img-fluid" src="../imagens/imagem20.PNG"></a>
+                    <a hef=""> <img class="img-fluid" src="imagens/imagem20.PNG"></a>
                 </div>
                 <div class="col">
-                    <a hef=""> <img class="img-fluid" src="../imagens/imagem21.PNG"></a>
+                    <a hef=""> <img class="img-fluid" src="imagens/imagem21.PNG"></a>
                 </div>
                 <div class="col">
-                    <a hef=""> <img class="img-fluid" src="../imagens/imagem22.PNG"></a>
+                    <a hef=""> <img class="img-fluid" src="imagens/imagem22.PNG"></a>
                 </div>
             </div>
         </div>
@@ -467,26 +469,26 @@ include('./admin/_functions_utils.inc.php');
         <div class="container">
             <div class="row colunainstagram">
                 <div class="col">
-                    <a hef=""> <img class="img-fluid" src="../imagens/imagem17.PNG"></a>
+                    <a hef=""> <img class="img-fluid" src="imagens/imagem17.PNG"></a>
                 </div>
                 <div class="col">
-                    <a hef=""> <img class="img-fluid" src="../imagens/imagem18.PNG"></a>
-                </div>
-            </div>
-            <div class="row colunainstagram">
-                <div class="col">
-                    <a hef=""> <img class="img-fluid" src="../imagens/imagem19.PNG"></a>
-                </div>
-                <div class="col">
-                    <a hef=""> <img class="img-fluid" src="../imagens/imagem20.PNG"></a>
+                    <a hef=""> <img class="img-fluid" src="imagens/imagem18.PNG"></a>
                 </div>
             </div>
             <div class="row colunainstagram">
                 <div class="col">
-                    <a hef=""> <img class="img-fluid" src="../imagens/imagem21.PNG"></a>
+                    <a hef=""> <img class="img-fluid" src="imagens/imagem19.PNG"></a>
                 </div>
                 <div class="col">
-                    <a hef=""> <img class="img-fluid" src="../imagens/imagem22.PNG"></a>
+                    <a hef=""> <img class="img-fluid" src="imagens/imagem20.PNG"></a>
+                </div>
+            </div>
+            <div class="row colunainstagram">
+                <div class="col">
+                    <a hef=""> <img class="img-fluid" src="imagens/imagem21.PNG"></a>
+                </div>
+                <div class="col">
+                    <a hef=""> <img class="img-fluid" src="imagens/imagem22.PNG"></a>
                 </div>
             </div>
         </div>
@@ -594,15 +596,15 @@ include('./admin/_functions_utils.inc.php');
                     <li> <a class="textolistarodape" href=""><svg class="iconescontatorodape" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                 <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
                                 <path d="M464 64C490.5 64 512 85.49 512 112C512 127.1 504.9 141.3 492.8 150.4L275.2 313.6C263.8 322.1 248.2 322.1 236.8 313.6L19.2 150.4C7.113 141.3 0 127.1 0 112C0 85.49 21.49 64 48 64H464zM217.6 339.2C240.4 356.3 271.6 356.3 294.4 339.2L512 176V384C512 419.3 483.3 448 448 448H64C28.65 448 0 419.3 0 384V176L217.6 339.2z" />
-                            </svg> contato@petitrose.com.br</a></li>
+                            </svg> contato@carolinasens.com.br</a></li>
                     <li> <a class="textolistarodape" href=""><svg class="iconescontatorodape" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                 <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
                                 <path d="M511.2 387l-23.25 100.8c-3.266 14.25-15.79 24.22-30.46 24.22C205.2 512 0 306.8 0 54.5c0-14.66 9.969-27.2 24.22-30.45l100.8-23.25C139.7-2.602 154.7 5.018 160.8 18.92l46.52 108.5c5.438 12.78 1.77 27.67-8.98 36.45L144.5 207.1c33.98 69.22 90.26 125.5 159.5 159.5l44.08-53.8c8.688-10.78 23.69-14.51 36.47-8.975l108.5 46.51C506.1 357.2 514.6 372.4 511.2 387z" />
-                            </svg> (47) 3080-0806</a></li>
+                            </svg> (47) 0000-0000</a></li>
                     <li> <a class="textolistarodape" href=""><svg class="iconescontatorodape" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                 <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
                                 <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
-                            </svg> (47) 99241-9980</a></li>
+                            </svg> (47) 99900-5550</a></li>
                 </div>
                 <div class="col-xl-4 col-md-12">
                     <div class="rodapepagamentoecertificados">
@@ -610,13 +612,13 @@ include('./admin/_functions_utils.inc.php');
                             <div class="titulorodape2">
                                 <span>FORMAS DE PAGAMENTO</span>
                             </div>
-                            <img class="img-fluid imgrodapebandeiras" src="../imagens/bandeiras.png">
+                            <img class="img-fluid imgrodapebandeiras" src="imagens/bandeiras.png">
                         </div>
                         <div>
                             <div class="titulorodape2">
                                 <span>CERTIFICADOS</span>
                             </div>
-                            <img class="img-fluid imgrodapebandeiras" src="../imagens/validacao.png">
+                            <img class="img-fluid imgrodapebandeiras" src="imagens/validacao.png">
                         </div>
                     </div>
                 </div>
@@ -628,14 +630,13 @@ include('./admin/_functions_utils.inc.php');
             <div class="container">
                 <div class="row">
                     <div class="fimrodapeleft col">
-                        <a href=""><img src="../imagens/uoou_03.png"></a>
+                        <a href=""><img id="logoEmpresa" src="imagens/Logo_carolina.png"></a>
                     </div>
                     <div class="fimrodaperight col">
                         <div>
-                            <span>PETIT ROSÈ - Petit Rosè Confecção Ltda - CNPJ: 12.942.149/0001</span>
+                            <span>CAROLINA SENS - Sites</span>
                         </div>
-                        <div><span>Rua Governador Jorge Lacerda, 3019 – Velha Central, Blumenau - SC | CEP
-                                90045-001</span>
+                        <div><span>Blumenau - SC</span>
                         </div>
                     </div>
                 </div>
@@ -647,14 +648,13 @@ include('./admin/_functions_utils.inc.php');
                 <div class="row">
                     <div class="fimrodaperight col-12">
                         <div>
-                            <span>PETIT ROSÈ - Petit Rosè Confecção Ltda - CNPJ: 12.942.149/0001</span>
+                            <span>CAROLINA SENS - Sites</span>
                         </div>
-                        <div><span>Rua Governador Jorge Lacerda, 3019 – Velha Central, Blumenau - SC | CEP
-                                90045-001</span>
+                        <div><span>Blumenau - SC</span>
                         </div>
                     </div>
                     <div class="fimrodapeleft col-12">
-                        <a href=""><img src="../imagens/uoou_03.png"></a>
+                        <a href=""><img src="imagens/Logo_carolina.png"></a>
                     </div>
 
                 </div>
@@ -667,10 +667,10 @@ include('./admin/_functions_utils.inc.php');
 
     </div>
 
-    <script src="./owlcarousel/docs/assets/vendors/jquery.min.js"></script>
-    <script src="./owlcarousel/dist/owl.carousel.min.js"></script>
-    <script src="./backend/carousel.js"> </script>
-    <script src="./backend/carouselbeneficios.js"> </script>
+    <script src="owlcarousel/docs/assets/vendors/jquery.min.js"></script>
+    <script src="owlcarousel/dist/owl.carousel.min.js"></script>
+    <script src="backend/carousel.js"> </script>
+
 
 
 </body>

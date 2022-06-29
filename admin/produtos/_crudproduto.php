@@ -1,6 +1,7 @@
 <?php
 
 include('../includes/conexao.php');
+include('../includes/constantes.php');
 
 
 switch ($_REQUEST["action"]) {
@@ -19,7 +20,7 @@ switch ($_REQUEST["action"]) {
                 die("Arquivo muito grande! Tam máx 6MB");
             }
                 
-            $pasta = "../../assets/produto/"; 
+            $pasta = IMG_CAROUSEL; 
             $fotonome = $fotoarquivo['name']; 
             $fotonomealterado = uniqid();
             $extensaoimg = strtolower(pathinfo($fotonome,PATHINFO_EXTENSION)); 
