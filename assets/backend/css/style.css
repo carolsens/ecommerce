@@ -1,0 +1,32 @@
+
+  .olho {
+    cursor: pointer;
+    left: 160px;
+    position: absolute;
+    width: 20px;
+    top: 115px;
+    left: 320px;
+  }
+
+  #password {
+    position: relative;
+  }
+
+  
+  .olho-cadastro {
+    cursor: pointer;
+    left: 160px;
+    position: absolute;
+    width: 20px;
+    top: 125px;
+    left: 871px;
+  }
+
+  .olho-cadastro2 {
+    cursor: pointer;
+    left: 160px;
+    position: absolute;
+    width: 20px;
+    top: 172px;
+    left: 871px;
+  }

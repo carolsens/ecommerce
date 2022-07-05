@@ -1,63 +1,24 @@
 <?php
 
-include('../includes/protect.php');
-include('../includes/conexao.php');
+include('../../includes/init_admin.php');
 include('_functions_utils.inc.php');
+
+$title = "Edição de produto";
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<!-- Meta, title, CSS, favicons, etc. -->
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<title>Cadastro de produto</title>
-
-	<!-- Bootstrap -->
-	<link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Font Awesome -->
-	<link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	<!-- NProgress -->
-	<link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
-	<!-- iCheck -->
-	<link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	<!-- bootstrap-wysiwyg -->
-	<link href="../../vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
-	<!-- Select2 -->
-	<link href="../../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
-	<!-- Switchery -->
-	<link href="../../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
-	<!-- starrr -->
-	<link href="../../vendors/starrr/dist/starrr.css" rel="stylesheet">
-	<!-- bootstrap-daterangepicker -->
-	<link href="../../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
-	<!-- Custom Theme Style -->
-	<link href="../../build/css/custom.min.css" rel="stylesheet">
-</head>
+<?php include($adminBaseDir . '/includes/head.php'); ?>
 
 <body class="nav-md">
 	<div class="container body">
 		<div class="main_container">
-			<div class="col-md-3 left_col">
-				<div class="left_col scroll-view">
-					<div class="navbar nav_title" style="border: 0;">
-						<a href="index.php" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
-					</div>
 
-					<div class="clearfix"></div>
+			<?php include($adminBaseDir . '/includes/sidebar.php'); ?>
 
-					<?php include('../includes/sidebar.php'); ?>
-
-				</div>
-			</div>
-
-			<?php include('../includes/header.php'); ?>
+			<?php include($adminBaseDir . '/includes/header.php'); ?>
 
 			<!-- page content -->
 			<div class="right_col" role="main">
@@ -104,10 +65,10 @@ include('_functions_utils.inc.php');
 								<div class="x_content">
 									<br />
 
-									<?php 
-										$sql = "SELECT * FROM produto WHERE id=".$_REQUEST["id"];
-										$res = $mysqli->query($sql);
-										$product = $res->fetch_object();
+									<?php
+									$sql = "SELECT * FROM produto WHERE id=" . $_REQUEST["id"];
+									$res = $mysqli->query($sql);
+									$product = $res->fetch_object();
 									?>
 
 									<form action="_crudproduto.php" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST">
@@ -115,7 +76,7 @@ include('_functions_utils.inc.php');
 										<input type="hidden" name="id" value="<?php print $product->id; ?>">
 										<div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nome <span class="required">*</span>
-											</label>										
+											</label>
 											<div class="col-md-6 col-sm-6 ">
 												<input type="text" id="first-name" required="required" class="form-control" name="nome" value="<?php print $product->nome; ?>">
 											</div>
@@ -130,30 +91,30 @@ include('_functions_utils.inc.php');
 										<div class="item form-group">
 											<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Localização no site <span class="required">*</span></label>
 											<div class="col-md-6 col-sm-6 ">
-												<select class="form-control" name="local_pagina_inicial" >
+												<select class="form-control" name="local_pagina_inicial">
 													<option></option>
-													<option value="carouselone" <?php if($product->local_pagina_inicial == 'carouselone'): ?>selected<?php endif; ?>>Carrossel News</option>
-													<option value="carouselstwo" <?php if($product->local_pagina_inicial == 'carouseltwo'): ?>selected<?php endif; ?>>Carrossel Promoções</option>
-													<option value="carouselthree" <?php if($product->local_pagina_inicial == 'carouselthree'): ?>selected<?php endif; ?>>Carrossel Mais Vendidos</option>											
+													<option value="carouselone" <?php if ($product->local_pagina_inicial == 'carouselone') : ?>selected<?php endif; ?>>Carrossel News</option>
+													<option value="carouselstwo" <?php if ($product->local_pagina_inicial == 'carouseltwo') : ?>selected<?php endif; ?>>Carrossel Promoções</option>
+													<option value="carouselthree" <?php if ($product->local_pagina_inicial == 'carouselthree') : ?>selected<?php endif; ?>>Carrossel Mais Vendidos</option>
 												</select>
 											</div>
 										</div>
 										<div class="item form-group">
 											<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Categoria <span class="required">*</span></label>
 											<div class="col-md-6 col-sm-6 ">
-												<select class="form-control" name="id_categoria" >
+												<select class="form-control" name="id_categoria">
 													<option></option>
 													<?php
-														$sql = "SELECT * FROM categoria";
+													$sql = "SELECT * FROM categoria";
 
-														$res = $mysqli->query($sql);
+													$res = $mysqli->query($sql);
 
-														while ($category = $res->fetch_object()) { ?>
-															 
-															 <option value="<?php echo $category->id; ?>" <?php if ($product->id_categoria == $category->id): ?>selected<?php endif;?>><?php echo $category->nome; ?></option>
-															 <?php
+													while ($category = $res->fetch_object()) { ?>
 
-														} ?>											
+														<option value="<?php echo $category->id; ?>" <?php if ($product->id_categoria == $category->id) : ?>selected<?php endif; ?>><?php echo $category->nome; ?></option>
+													<?php
+
+													} ?>
 												</select>
 											</div>
 										</div>
@@ -175,11 +136,9 @@ include('_functions_utils.inc.php');
 										<div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Tag</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input type="text" id="tag" class="form-control" name="tarja" value="<?php print $product->tarja; ?>" >
+												<input type="text" id="tag" class="form-control" name="tarja" value="<?php print $product->tarja; ?>">
 											</div>
 										</div>
-
-										
 
 										<div class="ln_solid"></div>
 										<div class="item form-group">
@@ -198,52 +157,9 @@ include('_functions_utils.inc.php');
 		</div>
 	</div>
 
+	<?php include($adminBaseDir . '/includes/footer.php'); ?>
 
-
-
-
-	<!-- footer content -->
-	<?php include('../includes/footer.php'); ?>
-
-
-	<!-- jQuery -->
-	<script src="../../vendors/jquery/dist/jquery.min.js"></script>
-	<!-- Bootstrap -->
-	<script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-	<!-- FastClick -->
-	<script src="../../vendors/fastclick/lib/fastclick.js"></script>
-	<!-- NProgress -->
-	<script src="../../vendors/nprogress/nprogress.js"></script>
-	<!-- bootstrap-progressbar -->
-	<script src="../../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-	<!-- iCheck -->
-	<script src="../../vendors/iCheck/icheck.min.js"></script>
-	<!-- bootstrap-daterangepicker -->
-	<script src="../../vendors/moment/min/moment.min.js"></script>
-	<script src="../../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-	<!-- bootstrap-wysiwyg -->
-	<script src="../../vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
-	<script src="../../vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
-	<script src="../../vendors/google-code-prettify/src/prettify.js"></script>
-	<!-- jQuery Tags Input -->
-	<script src="../../vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
-	<!-- Switchery -->
-	<script src="../../vendors/switchery/dist/switchery.min.js"></script>
-	<!-- Select2 -->
-	<script src="../../vendors/select2/dist/js/select2.full.min.js"></script>
-	<!-- Parsley -->
-	<script src="../../vendors/parsleyjs/dist/parsley.min.js"></script>
-	<!-- Autosize -->
-	<script src="../../vendors/autosize/dist/autosize.min.js"></script>
-	<!-- jQuery autocomplete -->
-	<script src="../../vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
-	<!-- starrr -->
-	<script src="../../vendors/starrr/dist/starrr.js"></script>
-	<!-- Custom Theme Scripts -->
-	<script src="../../build/js/custom.min.js"></script>
-
-	<script src="../scriptbackend.js"></script>
-	<script src="../assets/libs/jquery.maskMoney.min.js"></script>
+	<?php include($adminBaseDir . '/includes/scripts.php'); ?>
 
 </body>
 

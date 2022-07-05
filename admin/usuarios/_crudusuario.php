@@ -6,12 +6,18 @@ include('../../includes/init_admin.php');
 switch ($_REQUEST["action"]) {
     case 'create':
         $nome = $_POST["nome"];
-        $ativo = $_POST["ativo"];
-        
-        $sql = "INSERT INTO categoria (nome, ativo) VALUE ('{$nome}', '{$ativo}')";
+        $loginemail = $_POST["loginemail"];
+
+        $hashsenha = trim(password_hash($_POST["senha"], PASSWORD_DEFAULT));
+
+        $senha = $hashsenha;
+     
+
+        $sql = "INSERT INTO usuario (nome, loginemail, senha) VALUE ('{$nome}', '{$loginemail}', '{$senha}')";
 
         $res = $mysqli->query($sql);
 
+   
         if($res==true){
             print "<script>alert('Cadastro realizado com sucesso');</script>";
             print "<script>location.href='index.php';</script>";
@@ -23,13 +29,16 @@ switch ($_REQUEST["action"]) {
 
     case 'edit':
         $nome = $_POST["nome"];
-        $ativo = $_POST["ativo"];
+        $loginemail = $_POST["loginemail"];
+        $senha = $_POST["senha"];
        
-        $sql = "UPDATE categoria SET
+        $sql = "UPDATE usuario SET
             nome='{$nome}',
-            ativo='{$ativo}'
+            loginemail='{$loginemail}',
+            senha=password_hash('{$senha}'),
             WHERE
                 id=".$_REQUEST["id"];
+
 
         $res = $mysqli->query($sql);
 
@@ -40,10 +49,11 @@ switch ($_REQUEST["action"]) {
             print "<script>alert('Não foi possível realizar a edição');</script>";
             print "<script>location.href='index.php';</script>";
         }
+
         break;
 
     case 'delet':
-        $sql = "DELETE FROM categoria WHERE id=".$_REQUEST["id"];
+        $sql = "DELETE FROM usuario WHERE id=".$_REQUEST["id"];
         $res = $mysqli->query($sql);
 
         if($res==true){
@@ -60,4 +70,3 @@ switch ($_REQUEST["action"]) {
     break;
 
 }
-

@@ -1,9 +1,8 @@
 <?php
 
 include('../../includes/init_admin.php');
-include('_functions_utils.inc.php');
 
-$title = "Categorias";
+$title = "Usuários";
 
 ?>
 
@@ -25,7 +24,7 @@ $title = "Categorias";
 				<div class="">
 					<div class="page-title">
 						<div class="title_left">
-							<h3>Categorias</h3>
+							<h3>Usuários</h3>
 						</div>
 						<div class="title_right">
 							<div class="col-md-5 col-sm-5  form-group pull-right top_search">
@@ -44,11 +43,11 @@ $title = "Categorias";
 						<div class="col-md-12 col-sm-12 ">
 							<div class="x_panel">
 								<div class="x_title">
-									<h2>Categorias cadastradas <small></small></h2>
-									<a class="btn btn-secondary" href="cadastro.php" role="button">Cadastrar nova categoria</a>
+									<h2>Usuários cadastrados <small></small></h2>
+									<a class="btn btn-secondary" href="cadastro.php" role="button">Cadastrar novo usuário</a>
 								</div>
 								<?php
-								$sql = "SELECT * FROM categoria";
+								$sql = "SELECT * FROM usuario";
 
 								$res = $mysqli->query($sql);
 
@@ -59,7 +58,7 @@ $title = "Categorias";
 									<div class="col-md-6 col-sm-6  ">
 										<div class="x_panel">
 											<div class="x_title">
-												<h2>Categorias <small>Categorias cadastradas</small></h2>
+												<h2>Usuários <small>Usuários cadastradas</small></h2>
 												<ul class="nav navbar-right panel_toolbox">
 													<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 													</li>
@@ -80,20 +79,20 @@ $title = "Categorias";
 													<thead>
 														<tr>
 															<th>Nome</th>
-															<th>Situação</th>
+															<th>Email</th>
 															<th>Ação</th>
 														</tr>
 													</thead>
 													<tbody>
 
-														<?php while ($category = $res->fetch_object()) { ?>
+														<?php while ($usuario = $res->fetch_object()) { ?>
 															<tr>
-																<td> <?php echo $category->nome; ?> </td>
-																<td> <?php echo categoriaAtivoLabel($category->ativo) ?> </td>
+																<td> <?php echo $usuario->nome; ?> </td>
+																<td> <?php echo $usuario->loginemail; ?> </td>
 
 																<td>
-																	<button class='btn btn-success' onclick="if(confirm('Tem certeza que deseja editar?')){location.href='editar.php?action=edit&id=<?= $category->id ?>';}else{false;}">Editar</button>
-																	<button class='btn btn-danger' onclick="if(confirm('Tem certeza que deseja excluir?')){location.href='_crudcategory.php?action=delet&id=<?= $category->id ?>';}else{false;}">Excluir</button>
+																	<button class='btn btn-success' onclick="if(confirm('Tem certeza que deseja editar?')){location.href='editar.php?action=edit&id=<?= $usuario->id ?>';}else{false;}">Editar</button>
+																	<button class='btn btn-danger' onclick="if(confirm('Tem certeza que deseja excluir?')){location.href='_crudusuario.php?action=delet&id=<?= $usuario->id ?>';}else{false;}">Excluir</button>
 																</td>
 															</tr>
 													</tbody>
@@ -106,11 +105,13 @@ $title = "Categorias";
 									</div>
 
 								<?php
+
 								} else { ?>
 									<tr>
-										<td>Nenhum produto cadastrado</td>
+										<td>Nenhum usuário cadastrado</td>
 									<?php
 								}
+
 									?>
 
 							</div>

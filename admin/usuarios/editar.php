@@ -3,7 +3,7 @@
 include('../../includes/init_admin.php');
 include('_functions_utils.inc.php');
 
-$title = "Edição de categoria";
+$title = "Edição de usuários";
 
 ?>
 
@@ -25,7 +25,7 @@ $title = "Edição de categoria";
 				<div class="">
 					<div class="page-title">
 						<div class="title_left">
-							<h3>Edição de categorias</h3>
+							<h3>Edição de usuários</h3>
 						</div>
 
 						<div class="title_right">
@@ -44,7 +44,7 @@ $title = "Edição de categoria";
 						<div class="col-md-12 col-sm-12 ">
 							<div class="x_panel">
 								<div class="x_title">
-									<h2>Cadastro de categorias <small>aqui você irá editas os dados de cada categoria</small></h2>
+									<h2>Cadastro de usuários <small>aqui você irá editar os dados de cada usuário</small></h2>
 									<ul class="nav navbar-right panel_toolbox">
 										<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 										</li>
@@ -60,34 +60,47 @@ $title = "Edição de categoria";
 									<br />
 
 									<?php
-									$sql = "SELECT * FROM categoria WHERE id=".$_REQUEST["id"];
+									$sql = "SELECT * FROM usuario WHERE id=".$_REQUEST["id"];
 									
 									$res = $mysqli->query($sql);
 									
-									$category = $res->fetch_object();
+									$user = $res->fetch_object();
 									
 									?>
 
-									<form action="_crudcategory.php" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST">
+									<form action="_crudusuario.php" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST">
 										<input type="hidden" name="action" value="edit">
-										<input type="hidden" name="id" value="<?php print $category->id; ?>">
+										<input type="hidden" name="id" value="<?php print $user->id; ?>">
 										<div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nome <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input type="text" id="first-name" required="required" class="form-control" name="nome" value="<?php print $category->nome; ?>">
+												<input type="text" id="first-name" required="required" class="form-control" name="nome" value="<?php print $user->nome; ?>">
 											</div>
 										</div>
 
 										<div class="item form-group">
-											<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Situação<span class="required">*</span></label>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="loginemail">Email para login <span class="required">*</span>
+											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<select class="form-control" name="ativo">
-													<option></option>
-													<option value="1" <?php if ($category->ativo == "1") : ?>selected<?php endif; ?>>Ativo</option>
-													<option value="0" <?php if ($category->ativo == "0") : ?>selected<?php endif; ?>>Inativo</option>
-												</select>
+												<input type="email" id="loginemail" required="required" class="form-control" name="loginemail" value="<?php print $user->loginemail; ?>">
 											</div>
+										</div>
+										<div class="item form-group">
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="senha">Senha inicial<span class="required">*</span>
+											</label>
+											<div class="col-md-6 col-sm-6 ">
+												<input type="password" id="pass" required="required" class="form-control" name="senha" value="<?php print $user->senha; ?>">
+											</div>
+											<img src="https://cdn0.iconfinder.com/data/icons/ui-icons-pack/100/ui-icon-pack-14-512.png" id="olho" class="olho-cadastro">
+										</div>
+										<div class="item form-group">
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="senha2">Repita a senha<span class="required">*</span>
+											</label>
+											<div class="col-md-6 col-sm-6 ">
+												<input type="password" id="pass2" required="required" class="form-control" name="senha2">
+											</div>
+											<img src="https://cdn0.iconfinder.com/data/icons/ui-icons-pack/100/ui-icon-pack-14-512.png" id="olho2" class="olho-cadastro2">
 										</div>
 
 										<div class="ln_solid"></div>

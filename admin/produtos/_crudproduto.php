@@ -1,8 +1,6 @@
 <?php
 
-include('../includes/conexao.php');
-include('../includes/constantes.php');
-
+include('../../includes/init_admin.php');
 
 switch ($_REQUEST["action"]) {
     case 'create':
@@ -20,7 +18,6 @@ switch ($_REQUEST["action"]) {
                 die("Arquivo muito grande! Tam máx 6MB");
             }
                 
-            $pasta = IMG_CAROUSEL; 
             $fotonome = $fotoarquivo['name']; 
             $fotonomealterado = uniqid();
             $extensaoimg = strtolower(pathinfo($fotonome,PATHINFO_EXTENSION)); 
@@ -29,7 +26,7 @@ switch ($_REQUEST["action"]) {
                 die("Tipo de arquivo não aceito");
             }
 
-            $foto = $pasta . $fotonomealterado . "." . $extensaoimg;
+            $foto = $fotonomealterado . "." . $extensaoimg;
 
             $fotoenviada = move_uploaded_file($fotoarquivo["tmp_name"], $foto);
         
@@ -39,7 +36,6 @@ switch ($_REQUEST["action"]) {
 
         $res = $mysqli->query($sql);
 
-   
         if($res==true){
             print "<script>alert('Cadastro realizado com sucesso');</script>";
             print "<script>location.href='index.php';</script>";

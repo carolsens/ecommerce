@@ -1,8 +1,7 @@
 <?php
 
-include('admin/includes/conexao.php');
-include('admin/produtos/_functions_utils.inc.php');
-
+include('includes/init.php');
+include($adminBaseDir . DIRECTORY_SEPARATOR . 'produtos/_functions_utils.inc.php');
 
 ?>
 
@@ -19,36 +18,34 @@ include('admin/produtos/_functions_utils.inc.php');
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Raleway:ital,wght@0,400;0,700;0,800;1,800&display=swap" rel="stylesheet">
 
-    <link href="css/style.css" rel="stylesheet">
+    <link href="<?= BASE_URL_CSS_FRONTEND ?>/style.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="owlcarousel/dist/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="owlcarousel/dist/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="<?= BASE_URL_LIBS_FRONTEND ?>/owlcarousel/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="<?= BASE_URL_LIBS_FRONTEND ?>/owlcarousel/dist/assets/owl.theme.default.min.css">
 
 </head>
 
-
 <body>
-
     <div id="navbar-faixasuperior">
         <div class="container">
             <div class="row">
                 <div class="col">
                     <div class="navbar-superior-left">
-                        <a href="./meuspedidos.html"> MEUS PEDIDOS </a>
-                        <a href="./minhaconta.html"> MINHA CONTA </a>
+                        <a href="#"> MEUS PEDIDOS </a>
+                        <a href=".#"> MINHA CONTA </a>
                     </div>
                 </div>
                 <div class="col">
                     <div class="navbar-superior-center">
-                        <a class="active" href="./"> VAREJO </a>
-                        <a class="atacado" href="./atacado.html"> ATACADO </a>
+                        <a class="active" href="#"> VAREJO </a>
+                        <a class="atacado" href="#"> ATACADO </a>
                     </div>
                 </div>
                 <div class="col">
                     <div class="navbar-superior-right">
-                        <a href="./cadastrese.html"> CADASTRE-SE </a>
+                        <a href="#"> CADASTRE-SE </a>
                         <a> | </a>
-                        <a href="./entrar.html"> ENTRAR </a>
+                        <a href="#"> ENTRAR </a>
                     </div>
                 </div>
             </div>
@@ -60,8 +57,8 @@ include('admin/produtos/_functions_utils.inc.php');
             <div class="row">
                 <div class="col-6">
                     <div class="navbar-tipoloja-mobile">
-                        <a class="active" href="./"> VAREJO </a>
-                        <a class="atacado" href="./atacado.html"> ATACADO </a>
+                        <a class="active" href="#"> VAREJO </a>
+                        <a class="atacado" href="#"> ATACADO </a>
                     </div>
                 </div>
                 <div class="col-6">
@@ -100,11 +97,11 @@ include('admin/produtos/_functions_utils.inc.php');
                     </form>
                 </div>
                 <div class="col">
-                    <img id="logo" src="imagens/logofinal.png">
+                    <img id="logo" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/logofinal.png">
                 </div>
                 <div class="col">
                     <div class="navbar-logo-carrinho">
-                        <a href="./carrinho.html"> <img id="carrinho" src="imagens/shopping-bag.svg"> </a>
+                        <a href="#"> <img id="carrinho" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/shopping-bag.svg"> </a>
                     </div>
                 </div>
             </div>
@@ -115,12 +112,12 @@ include('admin/produtos/_functions_utils.inc.php');
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <img id="logo-mobile" class="img-fluid" src="imagens/logofinal.png">
+                    <img id="logo-mobile" class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/logofinal.png">
                 </div>
                 <div class="col">
                     <div class="iconesOpcao">
-                        <a href="./carrinho.html"> <img id="carrinho-mobile" src="imagens/shopping-bag.svg"> </a>
-                        <a href="./minhaconta.html"> <svg id="minhaconta-mobile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <a href="#"> <img id="carrinho-mobile" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/shopping-bag.svg"> </a>
+                        <a href="#"> <svg id="minhaconta-mobile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                 <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
                                 <path d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z" />
                             </svg> </a>
@@ -134,87 +131,39 @@ include('admin/produtos/_functions_utils.inc.php');
         </div>
     </div>
 
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Botão dropdown
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Alguma ação</a>
-            <a class="dropdown-item" href="#">Outra ação</a>
-            <a class="dropdown-item" href="#">Alguma coisa aqui</a>
-        </div>
-    </div>
-
     <div id="navbar-menu">
         <div class="container">
             <div class="row">
-                <div class="col dropdown">
-                    <div class="navbar-menu-todososprodutos">
-                        <a class="dropdown" href="./" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            TODOS PRODUTOS </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Opção 1</a>
-                            <a class="dropdown-item" href="#">Opção 2</a>
-                            <a class="dropdown-item" href="#">Opção 3</a>
+
+                <?php $sqlcategoria = "SELECT * FROM categoria WHERE ativo='1'";
+
+                $categorias = $mysqli->query($sqlcategoria);
+
+                $total = $categorias->num_rows;
+                $count = 1;
+
+                ?>
+
+                <?php foreach ($categorias as $categoria) : ?>
+
+                    <div class="col dropdown">
+                        <div <?php
+                                if ($count === 1) { ?>class="navbar-menu-primeiroitem" <?php } else if ($count === $total) { ?>class="navbar-menu-ultimoitem" <?php } else { ?> class="navbar-menu-meio" <?php } ?>>
+
+                            <a class="dropdown" href="./" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <?php echo $categoria['nome'] ?> </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Opção 1</a>
+                                <a class="dropdown-item" href="#">Opção 2</a>
+                                <a class="dropdown-item" href="#">Opção 3</a>
+                            </div>
+                            <?php $count++; ?>
                         </div>
                     </div>
-                </div>
-                <div class="col dropdown">
-                    <div class="navbar-menu-conjuntos">
-                        <a class="dropdown" href="./" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            CONJUNTOS </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Opção 1</a>
-                            <a class="dropdown-item" href="#">Opção 2</a>
-                            <a class="dropdown-item" href="#">Opção 3</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col dropdown">
-                    <div class="navbar-menu-sapatos">
-                        <a class="dropdown" href="./" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            SAPATOS </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Opção 1</a>
-                            <a class="dropdown-item" href="#">Opção 2</a>
-                            <a class="dropdown-item" href="#">Opção 3</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col dropdown">
-                    <div class="navbar-menu-sportfit">
-                        <a class="dropdown" href="./" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            LINHA SPORT FIT </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Opção 1</a>
-                            <a class="dropdown-item" href="#">Opção 2</a>
-                            <a class="dropdown-item" href="#">Opção 3</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col dropdown">
-                    <div class="navbar-menu-acessorios">
-                        <a class="dropdown" href="./" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            ACESSÓRIOS </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Opção 1</a>
-                            <a class="dropdown-item" href="#">Opção 2</a>
-                            <a class="dropdown-item" href="#">Opção 3</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col dropdown">
-                    <div class="navbar-menu-promocoes">
-                        <a class="dropdown" href="./" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            PROMOÇÕES </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Opção 1</a>
-                            <a class="dropdown-item" href="#">Opção 2</a>
-                            <a class="dropdown-item" href="#">Opção 3</a>
-                        </div>
-                    </div>
-                </div>
-                </ul>
+
+                    </ul>
+                <?php endforeach; ?>
+
             </div>
         </div>
     </div>
@@ -224,54 +173,47 @@ include('admin/produtos/_functions_utils.inc.php');
             <div class="row">
                 <div class="col">
                     <div class="navbar-beneficio1">
-                        <img src="imagens/beneficio1.png">
+                        <img src="<?= BASE_URL_IMAGENS_FRONTEND ?>/beneficio1.png">
                     </div>
                 </div>
                 <div class="col">
                     <div class="navbar-beneficio2">
-                        <img src="imagens/beneficio2.png">
+                        <img src="<?= BASE_URL_IMAGENS_FRONTEND ?>/beneficio2.png">
                     </div>
                 </div>
                 <div class="col">
                     <div class="navbar-beneficio3">
-                        <img src="imagens/beneficio3.png">
+                        <img src="<?= BASE_URL_IMAGENS_FRONTEND ?>/beneficio3.png">
                     </div>
                 </div>
             </div>
         </div>
 
     </div>
-
 
     <div id="carousel-mobile">
         <div class="container">
             <div class="owl-carousel owl-theme carrosel-beneficios">
                 <div class="item">
-                    <img class="img_carousel" src="imagens/beneficio1.png">
+                    <img class="img_carousel" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/beneficio1.png">
                 </div>
                 <div class="item">
-                    <img class="img_carousel" src="imagens/beneficio2.png">
+                    <img class="img_carousel" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/beneficio2.png">
                 </div>
                 <div class="item">
-                    <img class="img_carousel" src="imagens/beneficio3.png">
+                    <img class="img_carousel" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/beneficio3.png">
                 </div>
             </div>
         </div>
     </div>
 
-
-
-
-
-
     <div id="bannerprincipal">
         <div class="container-fluid">
             <div class="main-image-container">
-                <img class="img-fluid" src="imagens/banner01.png">
-            </div>
-
+                <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/banner01.png">
+                </div>
             <div class="navbarfimbannerprincipal">
-                <img class="img-fluid imagemfimbanner" src="imagens/barratroca.PNG">
+                <img class="img-fluid imagemfimbanner" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/barratroca.png">
             </div>
 
         </div>
@@ -282,7 +224,7 @@ include('admin/produtos/_functions_utils.inc.php');
             <div class="row">
                 <div class="col-xl-4 col-md-12 organizacao-categorias">
 
-                    <a class="imagenscategorias" href="./"> <img class="img-fluid" src="imagens/imagem1.PNG">
+                    <a class="imagenscategorias" href="./"> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem1.PNG">
 
                         <div class="sombra">
                             <div class="destaque-imagem">CONJUNTOS</div>
@@ -293,7 +235,7 @@ include('admin/produtos/_functions_utils.inc.php');
                 <div class="col-xl-4 col-md-12">
                     <div style="margin-bottom: 27px">
                         <a class="imagenscategorias organizacao-categorias" href="./">
-                            <img id="navbarcatimagmeio" class="img-fluid" src="imagens/imagem3.PNG">
+                            <img id="navbarcatimagmeio" class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem3.PNG">
                             <div class="sombra">
                                 <div class="destaque-imagem">SAPATOS</div>
                             </div>
@@ -301,7 +243,7 @@ include('admin/produtos/_functions_utils.inc.php');
                     </div>
                     <div>
                         <a class="imagenscategorias organizacao-categorias" href="./">
-                            <img class="img-fluid imagenscategorias" src="imagens/imagem2.PNG">
+                            <img class="img-fluid imagenscategorias" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem2.PNG">
                             <div class="sombra">
                                 <div class="destaque-imagem">ACESSÓRIOS</div>
                             </div>
@@ -309,7 +251,7 @@ include('admin/produtos/_functions_utils.inc.php');
                     </div>
                 </div>
                 <div class="col-xl-4 col-md-12 organizacao-categorias">
-                    <a class="imagenscategorias" href="./"> <img class="img-fluid imagenscategorias" src="imagens/imagem4.PNG">
+                    <a class="imagenscategorias" href="./"> <img class="img-fluid imagenscategorias" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem4.PNG">
                         <div class="sombra">
                             <div class="destaque-imagem">PROMOÇÕES</div>
                         </div>
@@ -335,7 +277,7 @@ include('admin/produtos/_functions_utils.inc.php');
 
                 <?php foreach ($products as $product) : ?>
                     <div class="item">
-                        <img class="imgcarousel1" src="<?php echo $product['foto'] ?>">
+                        <img class="imgcarousel1" src="<?php echo BASE_URL_PRODUTO_FRONTEND . "/" . $product['foto'] ?>">
                         <h3><?php echo $product['nome'] ?></h3>
                         <h4>R$ <?php echo moneyFormat($product['preco']) ?></h4>
                         <h5>ou 12x de R$ 15,59</h5>
@@ -353,7 +295,7 @@ include('admin/produtos/_functions_utils.inc.php');
     <div id="bannersecundario">
         <div class="container">
             <div class="row">
-                <img src="imagens/banner02.PNG">
+                <img src="<?= BASE_URL_IMAGENS_FRONTEND ?>/banner02.PNG">
             </div>
         </div>
     </div>
@@ -374,7 +316,7 @@ include('admin/produtos/_functions_utils.inc.php');
 
                 <?php foreach ($products as $product) : ?>
                     <div class="item">
-                        <img class="imgcarousel1" src="<?php echo $product['foto'] ?>">
+                        <img class="imgcarousel1" src="<?php echo BASE_URL_PRODUTO_FRONTEND . "/" . $product['foto'] ?>">
                         <h3><?php echo $product['nome'] ?></h3>
                         <h6><s>R$ <?php echo moneyFormat($product['preco']) ?></h6></s>
                         <h4>R$ <?php echo moneyFormat($product['precopromocional']) ?></h4>
@@ -405,7 +347,7 @@ include('admin/produtos/_functions_utils.inc.php');
 
                 <?php foreach ($products as $product) : ?>
                     <div class="item">
-                        <img class="imgcarousel1" src="<?php echo $product['foto'] ?>">
+                        <img class="imgcarousel1" src="<?php echo BASE_URL_PRODUTO_FRONTEND . "/" . $product['foto'] ?>">
                         <h3><?php echo $product['nome'] ?></h3>
                         <h4>R$ <?php echo moneyFormat($product['preco']) ?></h4>
                         <h5>ou 12x de R$ 15,59</h5>
@@ -437,29 +379,28 @@ include('admin/produtos/_functions_utils.inc.php');
         </div>
     </div>
 
-
     <div id="navbarimginstagram">
         <div class="container">
             <div class="navbarimginstragam1 row">
                 <div class="col">
-                    <a hef=""> <img class="img-fluid" src="imagens/imagem17.PNG"></a>
+                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem17.PNG"></a>
                 </div>
                 <div class="col">
-                    <a hef=""> <img class="img-fluid" src="imagens/imagem18.PNG"></a>
+                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem18.PNG"></a>
                 </div>
                 <div class="col">
-                    <a hef=""> <img class="img-fluid" src="imagens/imagem19.PNG"></a>
+                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem19.PNG"></a>
                 </div>
             </div>
             <div class="navbarimginstragam2 row">
                 <div class="col">
-                    <a hef=""> <img class="img-fluid" src="imagens/imagem20.PNG"></a>
+                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem20.PNG"></a>
                 </div>
                 <div class="col">
-                    <a hef=""> <img class="img-fluid" src="imagens/imagem21.PNG"></a>
+                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem21.PNG"></a>
                 </div>
                 <div class="col">
-                    <a hef=""> <img class="img-fluid" src="imagens/imagem22.PNG"></a>
+                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem22.PNG"></a>
                 </div>
             </div>
         </div>
@@ -469,31 +410,30 @@ include('admin/produtos/_functions_utils.inc.php');
         <div class="container">
             <div class="row colunainstagram">
                 <div class="col">
-                    <a hef=""> <img class="img-fluid" src="imagens/imagem17.PNG"></a>
+                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem17.PNG"></a>
                 </div>
                 <div class="col">
-                    <a hef=""> <img class="img-fluid" src="imagens/imagem18.PNG"></a>
-                </div>
-            </div>
-            <div class="row colunainstagram">
-                <div class="col">
-                    <a hef=""> <img class="img-fluid" src="imagens/imagem19.PNG"></a>
-                </div>
-                <div class="col">
-                    <a hef=""> <img class="img-fluid" src="imagens/imagem20.PNG"></a>
+                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem18.PNG"></a>
                 </div>
             </div>
             <div class="row colunainstagram">
                 <div class="col">
-                    <a hef=""> <img class="img-fluid" src="imagens/imagem21.PNG"></a>
+                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem19.PNG"></a>
                 </div>
                 <div class="col">
-                    <a hef=""> <img class="img-fluid" src="imagens/imagem22.PNG"></a>
+                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem20.PNG"></a>
+                </div>
+            </div>
+            <div class="row colunainstagram">
+                <div class="col">
+                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem21.PNG"></a>
+                </div>
+                <div class="col">
+                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem22.PNG"></a>
                 </div>
             </div>
         </div>
     </div>
-
 
     <div id="navbarnewsletter">
         <div class="cadastronewsletter">
@@ -512,7 +452,6 @@ include('admin/produtos/_functions_utils.inc.php');
             </div>
         </div>
     </div>
-
 
     <div id="navbarnewsletter-mobile">
         <div class="container-fluid">
@@ -612,25 +551,24 @@ include('admin/produtos/_functions_utils.inc.php');
                             <div class="titulorodape2">
                                 <span>FORMAS DE PAGAMENTO</span>
                             </div>
-                            <img class="img-fluid imgrodapebandeiras" src="imagens/bandeiras.png">
+                            <img class="img-fluid imgrodapebandeiras" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/bandeiras.png">
                         </div>
                         <div>
                             <div class="titulorodape2">
                                 <span>CERTIFICADOS</span>
                             </div>
-                            <img class="img-fluid imgrodapebandeiras" src="imagens/validacao.png">
+                            <img class="img-fluid imgrodapebandeiras" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/validacao.png">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-
         <div class="navbarfimrodape">
             <div class="container">
                 <div class="row">
                     <div class="fimrodapeleft col">
-                        <a href=""><img id="logoEmpresa" src="imagens/Logo_carolina.png"></a>
+                        <a href=""><img id="logoEmpresa" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/Logo_carolina.png"></a>
                     </div>
                     <div class="fimrodaperight col">
                         <div>
@@ -654,24 +592,17 @@ include('admin/produtos/_functions_utils.inc.php');
                         </div>
                     </div>
                     <div class="fimrodapeleft col-12">
-                        <a href=""><img src="imagens/Logo_carolina.png"></a>
+                        <a href=""><img src="<?= BASE_URL_IMAGENS_FRONTEND ?>/Logo_carolina.png"></a>
                     </div>
 
                 </div>
             </div>
         </div>
-
-
-
-
-
     </div>
 
-    <script src="owlcarousel/docs/assets/vendors/jquery.min.js"></script>
-    <script src="owlcarousel/dist/owl.carousel.min.js"></script>
-    <script src="backend/carousel.js"> </script>
-
-
+    <script src="<?= BASE_URL_LIBS_FRONTEND ?>/owlcarousel/docs/assets/vendors/jquery.min.js"></script>
+    <script src="<?= BASE_URL_LIBS_FRONTEND ?>/owlcarousel/dist/owl.carousel.min.js"></script>
+    <script src="<?= BASE_URL_JS_FRONTEND ?>/carousel.js"> </script>
 
 </body>
 
