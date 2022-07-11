@@ -100,6 +100,7 @@ $title = "Produtos";
 															<th>Preço promocional</th>
 															<th>Tag</th>
 															<th>Imagem</th>
+															<th>Atributo</th>
 															<th>Ação</th>
 														</tr>
 													</thead>
@@ -115,6 +116,9 @@ $title = "Produtos";
 																<td> <?php $product->precopromocional > 0 ? print "R$ " . moneyFormat($product->precopromocional)  : ""  ?> </td>
 																<td> <?php echo $product->tarja ?> </td>
 																<td> <img height='50' src="<?php echo BASE_URL_PRODUTO_FRONTEND . "/" . $product->foto ?>"> </td>
+																<td>
+																	<button class='btn btn-secondary' onclick="if(confirm('Tem certeza que deseja editar?')){location.href='atributos.php?action=edit&id=<?= $product->id ?>';}else{false;}">Editar atributo</button>
+																</td>
 																<td>
 																	<button class='btn btn-success' onclick="if(confirm('Tem certeza que deseja editar?')){location.href='editar.php?action=edit&id=<?= $product->id ?>';}else{false;}">Editar</button>
 																	<button class='btn btn-danger' onclick="if(confirm('Tem certeza que deseja excluir?')){location.href='_crudproduto.php?action=delet&id=<?= $product->id ?>';}else{false;}">Excluir</button>

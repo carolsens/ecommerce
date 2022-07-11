@@ -1,6 +1,6 @@
 <?php
 
-include('../includes/init_admin.php');
+include('../includes/init.php');
 
 if (isset($_POST['email']) || isset($_POST['senha'])) {
 

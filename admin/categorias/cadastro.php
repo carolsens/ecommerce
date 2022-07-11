@@ -19,7 +19,7 @@ $title = "Cadastro de categoria";
 
 			<?php include($adminBaseDir . '/includes/sidebar.php'); ?>
 
-			<?php include($adminBaseDir . '/ncludes/header.php'); ?>
+			<?php include($adminBaseDir . '/includes/header.php'); ?>
 
 			<!-- page content -->
 			<div class="right_col" role="main">

@@ -1,0 +1,9 @@
+.products {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.products__img {
+    max-width: 100%;
+    margin-top: 20px;
+}

@@ -30,12 +30,14 @@ switch ($_REQUEST["action"]) {
     case 'edit':
         $nome = $_POST["nome"];
         $loginemail = $_POST["loginemail"];
-        $senha = $_POST["senha"];
+        $hashsenha = trim(password_hash($_POST["senha"], PASSWORD_DEFAULT));
+        $senha = $hashsenha;
+      
        
         $sql = "UPDATE usuario SET
             nome='{$nome}',
             loginemail='{$loginemail}',
-            senha=password_hash('{$senha}'),
+            senha='{$senha}'
             WHERE
                 id=".$_REQUEST["id"];
 

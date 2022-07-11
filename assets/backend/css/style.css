@@ -30,3 +30,27 @@
     top: 172px;
     left: 871px;
   }
+
+  .buttom__check {
+    max-width: 70px;
+    height: 38px;
+    margin-left: -10px;
+  }
+
+  .buttom__delet {
+    max-width: 20px;
+    fill:red;
+    background-color: white;
+  }
+
+  .atributos__list {
+    margin-top: -5px;
+    list-style-type: none;
+    padding-left: 0px;
+  }
+
+  .input__itens {
+    margin-top: 20px;
+  }
+
+ 

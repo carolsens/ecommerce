@@ -33,8 +33,6 @@
                     </li>
                 </ul>
             </div>
-
-
         </div>
 
         <!-- /sidebar menu -->
@@ -51,7 +49,7 @@
             <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
             </a>
-            <a data-toggle="tooltip" data-placement="top" title="Logout" href="logout.php">
+            <a data-toggle="tooltip" data-placement="top" title="Logout" href="<?= BASE_URL_ADMIN ?>/logout.php">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
             </a>
         </div>

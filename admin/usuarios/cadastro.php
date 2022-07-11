@@ -69,7 +69,7 @@ $title = "Cadastro de usuário";
 								</div>
 								<div class="x_content">
 									<br />
-									<form action="_crudusuario.php" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data" method="POST">
+									<form action="_crudusuario.php" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data" onsubmit="return validarSenha();" method="POST">
 										<input type="hidden" name="action" value="create">
 										<div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Nome <span class="required">*</span>
@@ -89,7 +89,7 @@ $title = "Cadastro de usuário";
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="senha">Senha inicial<span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input type="password" id="pass" required="required" class="form-control" name="senha">
+												<input type="password" id="password" required="required" class="form-control" name="senha">
 											</div>
 											<img src="https://cdn0.iconfinder.com/data/icons/ui-icons-pack/100/ui-icon-pack-14-512.png" id="olho" class="olho-cadastro">
 										</div>
@@ -97,7 +97,7 @@ $title = "Cadastro de usuário";
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="senha2">Repita a senha<span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input type="password" id="pass2" required="required" class="form-control" name="senha2">
+												<input type="password" id="passwordRepeat" required="required" class="form-control" name="repSenha">
 											</div>
 											<img src="https://cdn0.iconfinder.com/data/icons/ui-icons-pack/100/ui-icon-pack-14-512.png" id="olho2" class="olho-cadastro2">
 										</div>
@@ -106,10 +106,12 @@ $title = "Cadastro de usuário";
 										<div class="item form-group">
 											<div class="col-md-6 col-sm-6 offset-md-3">
 												<button class="btn btn-primary" type="reset">Limpar</button>
-												<button type="submit" class="btn btn-success">Enviar</button>
+												<button type="submit"  class="btn btn-success">Enviar</button>
 											</div>
 										</div>
 
+
+									
 									</form>
 								</div>
 							</div>
@@ -120,6 +122,7 @@ $title = "Cadastro de usuário";
 		</div>
 	</div>
 
+	
 	<?php include($adminBaseDir . '/includes/footer.php'); ?>
 
 	<?php include($adminBaseDir . '/includes/scripts.php'); ?>

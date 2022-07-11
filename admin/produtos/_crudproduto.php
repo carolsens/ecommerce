@@ -10,6 +10,7 @@ switch ($_REQUEST["action"]) {
         $preco = str_replace(",",".",$_POST["preco"])*100;
         $precopromocional = $_POST["precopromocional"];
         $tarja = $_POST["tarja"];
+        $id_categoria = $_POST["id_categoria"];
         
         if(isset($_FILES['fotoarquivo'])) {
             $fotoarquivo = $_FILES['fotoarquivo'];
@@ -28,11 +29,14 @@ switch ($_REQUEST["action"]) {
 
             $foto = $fotonomealterado . "." . $extensaoimg;
 
-            $fotoenviada = move_uploaded_file($fotoarquivo["tmp_name"], $foto);
+            $localfoto = $frontendBaseDir . "/assets/frontend/produto/" . $foto;
+
+            $fotoenviada = move_uploaded_file($fotoarquivo["tmp_name"], $localfoto);
         
         }
+        
 
-        $sql = "INSERT INTO produto (nome, descricao, local_pagina_inicial, preco, precopromocional, tarja, foto) VALUE ('{$nome}', '{$descricao}', '{$local_pagina_inicial}', '{$preco}', '{$precopromocional}', '{$tarja}', '{$foto}')";
+        $sql = "INSERT INTO produto (nome, descricao, local_pagina_inicial, preco, precopromocional, tarja, id_categoria, foto) VALUE ('{$nome}', '{$descricao}', '{$local_pagina_inicial}', '{$preco}', '{$precopromocional}', '{$tarja}','{$id_categoria}', '{$foto}')";
 
         $res = $mysqli->query($sql);
 

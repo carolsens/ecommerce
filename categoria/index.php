@@ -1,6 +1,6 @@
 <?php
 
-include('includes/init.php');
+include('../includes/init.php');
 include($adminBaseDir . DIRECTORY_SEPARATOR . 'produtos/_functions_utils.inc.php');
 
 ?>
@@ -19,6 +19,7 @@ include($adminBaseDir . DIRECTORY_SEPARATOR . 'produtos/_functions_utils.inc.php
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Raleway:ital,wght@0,400;0,700;0,800;1,800&display=swap" rel="stylesheet">
 
     <link href="<?= BASE_URL_CSS_FRONTEND ?>/style.css" rel="stylesheet">
+    <link href="<?= BASE_URL_CSS_FRONTEND ?>/stylecategory.css" rel="stylesheet">
 
     <link rel="stylesheet" href="<?= BASE_URL_LIBS_FRONTEND ?>/owlcarousel/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="<?= BASE_URL_LIBS_FRONTEND ?>/owlcarousel/dist/assets/owl.theme.default.min.css">
@@ -128,14 +129,12 @@ include($adminBaseDir . DIRECTORY_SEPARATOR . 'produtos/_functions_utils.inc.php
                         <div <?php
                                 if ($count === 1) { ?>class="navbar-menu__firstItem" <?php } else if ($count === $total) { ?>class="navbar-menu__lastItem" <?php } else { ?> class="navbar-menu__middleItem" <?php } ?>>
 
-                            <a class="dropdown navbar-menu__categories" href="categoria/<?= strtolower($categoria['nome']) ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="dropdown navbar-menu__categories" href="./" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?php echo $categoria['nome'];
 
-                              
+                                $idcategoria = $categoria['id'];
 
                                 ?> </a>
-
-                            
 
                             <?php $count++; ?>
                         </div>
@@ -168,270 +167,104 @@ include($adminBaseDir . DIRECTORY_SEPARATOR . 'produtos/_functions_utils.inc.php
         </div>
     </div>
 
-
-    <div class="top-banner">
+    <div class="filters">
         <div class="container">
             <div class="row">
-                <div class="col">
-                    <div class="top-banner__item">
-                        <img src="<?= BASE_URL_IMAGENS_FRONTEND ?>/beneficio1.png">
+                <div class="col-2">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Cor
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <?php
+                            $sqlcores = "SELECT * FROM produto_atributos
+                                        INNER JOIN produto ON produto.id = produto_atributos.id_produto
+                                        INNER JOIN atributo ON atributo.id = produto_atributos.id_atributo
+                                        WHERE produto.id_categoria = '8' AND atributo.nome = 'cor'";
+
+                            $cores = $mysqli->query($sqlcores);
+
+
+                            foreach ($cores as $cor) : ?>
+
+                                <li><a class="dropdown-item" href="index.php?filtro=<?= $cor['valor'] ?>"><?= $cor['valor'] ?></a></li>
+                            <?php endforeach ?>
+                        </ul>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="top-banner__item">
-                        <img src="<?= BASE_URL_IMAGENS_FRONTEND ?>/beneficio2.png">
+                <div class="col-2">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Tamanho
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <?php
+                            $sqlcores = "SELECT * FROM produto_atributos 
+                                        INNER JOIN produto ON produto.id = produto_atributos.id_produto
+                                        INNER JOIN atributo ON atributo.id = produto_atributos.id_atributo
+                                        WHERE produto.id_categoria = '8' AND atributo.nome = 'tamanho'";
+
+                            $cores = $mysqli->query($sqlcores);
+
+
+                            foreach ($cores as $cor) : ?>
+
+                                <li><a class="dropdown-item" href="#"><?= $cor['valor'] ?></a></li>
+                            <?php endforeach ?>
+                        </ul>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="top-banner__item">
-                        <img src="<?= BASE_URL_IMAGENS_FRONTEND ?>/beneficio3.png">
+                <div class="col-2">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Preço
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">Cor</a></li>
+                            <li><a class="dropdown-item" href="#">Tamanho</a></li>
+                            <li><a class="dropdown-item" href="#">Preço</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
-    <div class="top-banner-mobile">
-        <div class="container">
-            <div class="owl-carousel owl-theme top-banner-mobile__carousel">
-                <div class="item">
-                    <img class="top-banner-mobile__img" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/beneficio1.png">
-                </div>
-                <div class="item">
-                    <img class="top-banner-mobile__img" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/beneficio2.png">
-                </div>
-                <div class="item">
-                    <img class="top-banner-mobile__img" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/beneficio3.png">
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="banner">
-        <div class="container-fluid">
-            <div class="main-image-container">
-                <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/banner01.png">
-            </div>
-            <div class="banner__bottom">
-                <img class="img-fluid banner_imgBottom" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/barratroca.png">
-            </div>
-
-        </div>
-    </div>
-
-    <div class="gallery-categories">
+    <div class="products">
         <div class="container">
             <div class="row">
-                <div class="col-xl-4 col-md-12 gallery-categories__item">
-                    <a class="gallery-categories__img" href="./"> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem1.PNG">
-                        <div class="gallery-categories__shadow">
-                            <div class="gallery_categories__text">CONJUNTOS</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-xl-4 col-md-12">
-                    <div class="gallery-categories__item gallery-categories__itemMiddleTop">
-                        <a class="gallery-categories__img" href="./">
-                            <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem3.PNG">
-                            <div class="gallery-categories__shadowMiddle">
-                                <div class="gallery_categories__text">SAPATOS</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="gallery-categories__item">
-                        <a class="gallery-categories__img" href="./">
-                            <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem2.PNG">
-                            <div class="gallery-categories__shadowMiddle">
-                                <div class="gallery_categories__text">ACESSÓRIOS</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-12 gallery-categories__item">
-                    <a class="gallery-categories__img" href="./"> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem4.PNG">
-                        <div class="gallery-categories__shadow">
-                            <div class="gallery_categories__text">PROMOÇÕES</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="title-one">
-        <h2>VOCÊ VAI AMAR NOSSAS NEWS</h2>
-    </div>
 
-    <div class="gallery-products-one">
-        <div class="container">
-            <div class="owl-carousel owl-theme gallery-products__carousel">
 
-                <?php $sql = "SELECT * FROM produto WHERE local_pagina_inicial = 'carouselone';";
-
+                <?php
+					if (isset($_GET['filtro'])) {
+              
+				    	$filtro = $_GET['filtro'];
+                        $sql = "SELECT * FROM produto 
+                        INNER JOIN produto_atributos ON produto.id = produto_atributos.id_produto
+                        WHERE produto.id_categoria = '8' AND produto_atributos.valor = '$filtro'";
+					} else {
+                                
+                    $sql = "SELECT * FROM produto WHERE produto.id_categoria = '8'";
+                    }    
                 $products = $mysqli->query($sql);
 
                 ?>
 
                 <?php foreach ($products as $product) : ?>
-                    <div class="item">
-                        <img class="gallery-products-one__img" src="<?php echo BASE_URL_PRODUTO_FRONTEND . "/" . $product['foto'] ?>">
+                    <div class="col-6 col-xl-3 ">
+                        <img class="img-fluid products__img" src="<?php echo BASE_URL_PRODUTO_FRONTEND . "/" . $product['foto'] ?>">
                         <h3><?php echo $product['nome'] ?></h3>
                         <h4>R$ <?php echo moneyFormat($product['preco']) ?></h4>
                         <h5>ou 12x de R$ 15,59</h5>
-                        <?php if (!empty($product['tarja'])) : ?>
-                            <div class="gallery-products-one__tag">
-                                <?php echo $product['tarja'] ?>
-                            </div>
-                        <?php endif; ?>
+
                     </div>
                 <?php endforeach; ?>
             </div>
         </div>
     </div>
 
-    <div class="banner-middle">
-        <div class="container">
-            <div class="row">
-                <img src="<?= BASE_URL_IMAGENS_FRONTEND ?>/banner02.PNG">
-            </div>
-        </div>
-    </div>
-
-    <div class="title-two">
-        <h2>APROVEITE NOSSAS PROMOÇÕES</h2>
-    </div>
-
-    <div class="gallery-products-two">
-        <div class="container">
-            <div class="owl-carousel owl-theme gallery-products__carousel">
-
-                <?php $sql = "SELECT * FROM produto WHERE local_pagina_inicial = 'carouseltwo';";
-
-                $products = $mysqli->query($sql);
-
-                ?>
-
-                <?php foreach ($products as $product) : ?>
-                    <div class="item">
-                        <img class="gallery-products-two__img" src="<?php echo BASE_URL_PRODUTO_FRONTEND . "/" . $product['foto'] ?>">
-                        <h3><?php echo $product['nome'] ?></h3>
-                        <h6><s>R$ <?php echo moneyFormat($product['preco']) ?></h6></s>
-                        <h4>R$ <?php echo moneyFormat($product['precopromocional']) ?></h4>
-                        <h5>ou 12x de R$ 15,59</h5>
-                        <?php if (!empty($product['tarja'])) : ?>
-                            <div class="gallery-products-two__tag">
-                                <?php echo $product['tarja'] ?>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </div>
-
-    <div class="title-three">
-        <h2>CONHEÇA OS ITENS MAIS VENDIDOS</h2>
-    </div>
-
-    <div class="gallery-products-three">
-        <div class="container">
-            <div class="owl-carousel owl-theme gallery-products__carousel">
-                <?php $sql = "SELECT * FROM produto WHERE local_pagina_inicial = 'carouselthree';";
-
-                $products = $mysqli->query($sql);
-
-                ?>
-
-                <?php foreach ($products as $product) : ?>
-                    <div class="item">
-                        <img class="gallery-products-three__img" src="<?php echo BASE_URL_PRODUTO_FRONTEND . "/" . $product['foto'] ?>">
-                        <h3><?php echo $product['nome'] ?></h3>
-                        <h4>R$ <?php echo moneyFormat($product['preco']) ?></h4>
-                        <h5>ou 12x de R$ 15,59</h5>
-                        <?php if (!empty($product['tarja'])) : ?>
-                            <div class="gallery-products-three__tag">
-                                <?php echo $product['tarja'] ?>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </div>
-
-    <div class="title-instagram">
-        <div class="container">
-            <div>
-                <a href=""> <svg class="title-instagram__imgIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                        <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                        <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
-                    </svg></a>
-            </div>
-            <div>
-                <span class="title-instagram__title">SIGA-NOS NO INSTAGRAM</span>
-            </div>
-            <div class="title-instagram__text">
-                <span>Acompanhe todas as novidades em nosso instagram @instagram</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="gallery-instagram">
-        <div class="container">
-            <div class="gallery-instagram__img row">
-                <div class="col">
-                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem17.PNG"></a>
-                </div>
-                <div class="col">
-                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem18.PNG"></a>
-                </div>
-                <div class="col">
-                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem19.PNG"></a>
-                </div>
-            </div>
-            <div class="gallery-instagram__img row">
-                <div class="col">
-                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem20.PNG"></a>
-                </div>
-                <div class="col">
-                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem21.PNG"></a>
-                </div>
-                <div class="col">
-                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem22.PNG"></a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="gallery-instagram-mobile">
-        <div class="container">
-            <div class="row gallery-instagram-mobile__img">
-                <div class="col">
-                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem17.PNG"></a>
-                </div>
-                <div class="col">
-                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem18.PNG"></a>
-                </div>
-            </div>
-            <div class="row gallery-instagram-mobile__img">
-                <div class="col">
-                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem19.PNG"></a>
-                </div>
-                <div class="col">
-                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem20.PNG"></a>
-                </div>
-            </div>
-            <div class="row gallery-instagram-mobile__img">
-                <div class="col">
-                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem21.PNG"></a>
-                </div>
-                <div class="col">
-                    <a hef=""> <img class="img-fluid" src="<?= BASE_URL_IMAGENS_FRONTEND ?>/imagem22.PNG"></a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="newsletter">
         <div class="newsletter__registration">
