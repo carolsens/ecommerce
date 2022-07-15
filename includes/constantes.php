@@ -3,6 +3,8 @@
 //Pasta ecommerce
 CONST BASE_URL_ADMIN = 'http://localhost/ecommerce/admin';
 CONST BASE_URL_INCLUDES = 'http://localhost/ecommerce/includes';
+CONST BASE_URL_INCLUDES_FRONTEND = 'http://localhost/ecommerce/includes_frontend';
+CONST BASE_URL_CATEGORIA = 'http://localhost/ecommerce/categoria';
 
 //Pasta ecommerce/admin
 CONST BASE_URL_INCLUDES_ADMIN = 'http://localhost/ecommerce/admin/includes';
