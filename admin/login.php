@@ -45,6 +45,18 @@ $title = "Painel administrativo - Login";
 <?php include('includes/head.php'); ?>
 
 <body class="login">
+
+  <div class="navbar-notification">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          Esta é uma página demonstrativa e em desenvolvimento. Algumas funções não estão habilitadas. <br/>
+          Login para teste: email admin@teste.com - senha: testeadmin 
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div>
     <a class="hiddenanchor" id="signup"></a>
     <a class="hiddenanchor" id="signin"></a>

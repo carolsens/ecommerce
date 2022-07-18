@@ -2,6 +2,12 @@ a {
     text-decoration: none;
 }
 
+.navbar-notification {
+    background-color: yellow;
+    align-content: center;
+    text-align: center;
+}
+
 .container-fluid {
     padding: 0px
 }
@@ -86,6 +92,8 @@ h6 {
     background: #fff;
     color: #757575 !important;
     padding: 22px;
+    padding-top: 9px;
+    padding-bottom: 9px;
 }
 
 .navbar-top__link-center {
@@ -214,6 +222,19 @@ h6 {
     font-family: Montserrat, sans-serif;
     font-size: 12px; 
     padding: 8px;
+}
+
+.navbar-bottom-mobile__itens {
+    background-color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-size: 12px; 
+    padding: 8px;
+    text-transform: uppercase;
+}
+
+
+.navbar-bottom-mobile .dropdown-menu {
+    right: 0px;
 }
 
 .navbar-menu__dropdown {
@@ -935,6 +956,10 @@ h6 {
 
     .footer__menu {
         padding-top: 5px;
+    }
+
+    .gallery-categories__shadow {
+        display: none;
     }
 
 }

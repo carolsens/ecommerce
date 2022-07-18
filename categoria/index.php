@@ -109,16 +109,13 @@ endforeach;
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             Preço
                         </button>
-
-                      
-
+                        
 
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" value="<?php $price = 'price1'?>" href="?preco=0-100">R$ 0,00 - R$ 100,00</a></li>
-                            <li><a class="dropdown-item" value="<?php $price = 'price2'?>" href="#">R$ 100,00 - R$ 200,00</a></li>
-                            <li><a class="dropdown-item" value="<?php $price = 'price3'?>" href="#">Acima de R$ 200,00</a></li>
+                            <li><a class="dropdown-item" href="<?= generateURLfilter($filepath, $arrayurl, '0-100', true) ?>">R$ 0,00 - R$ 100,00</a></li>
+                            <li><a class="dropdown-item" href="<?= generateURLfilter($filepath, $arrayurl, '100-200', true) ?>">R$ 100,00 - R$ 200,00</a></li>
+                            <li><a class="dropdown-item" href="<?= generateURLfilter($filepath, $arrayurl, '200-acima', true) ?>">Acima de R$ 200,00</a></li>
 
-                          
                           
                         </ul>
                     </div>
@@ -133,7 +130,7 @@ endforeach;
         <div class="container">
             <div class="row">
                 <?php
-                if (isset($_GET['filtro'])) {
+                if (isset($_GET['filtro']) && isset($_GET['preco']) ) {
                     $sqlFilters = '';
                     foreach ($_GET['filtro'] as $filtro){
                         $sqlFilters .= "produto_atributos.valor = '$filtro' OR ";
@@ -141,42 +138,69 @@ endforeach;
 
                     $sqlFilters = substr($sqlFilters, 0, -3);
 
+                        $sqlprice = '';
+
+                        if($_GET['preco'] == '0-100') {
+                            $sqlprice .= " (produto.preco <= 10000)";
+                           } 
+    
+                           if($_GET['preco'] == '100-200') {
+                            $sqlprice .= " (produto.preco >= 10000) AND (produto.preco <= 20000)";
+                           } 
+    
+                           if($_GET['preco'] == '200-acima') {
+                            $sqlprice .= " (produto.preco > 20000)";
+                           }
                     
                     $sql = "SELECT * FROM produto 
                     INNER JOIN produto_atributos ON produto.id = produto_atributos.id_produto
-                    WHERE produto.id_categoria = $numberidcategoryurl AND ($sqlFilters)";
+                    WHERE produto.id_categoria = $numberidcategoryurl AND ($sqlFilters) AND ($sqlprice)";
+      
+                } else 
 
+                    if (isset($_GET['filtro'])) {
+                        $sqlFilters = '';
+                        foreach ($_GET['filtro'] as $filtro){
+                            $sqlFilters .= "produto_atributos.valor = '$filtro' OR ";
+                        }
+    
+                        $sqlFilters = substr($sqlFilters, 0, -3);
+                        
+                        $sql = "SELECT * FROM produto 
+                        INNER JOIN produto_atributos ON produto.id = produto_atributos.id_produto
+                        WHERE produto.id_categoria = $numberidcategoryurl AND ($sqlFilters)";
+    
+                        
+                    } else 
+
+                        if (isset($_GET['preco']) ) {
+                            $sqlprice = '';
+
+                            if($_GET['preco'] == '0-100') {
+                                $sqlprice .= " (produto.preco <= 10000)";
+                               } 
+        
+                               if($_GET['preco'] == '100-200') {
+                                $sqlprice .= " (produto.preco >= 10000) AND (produto.preco <= 20000)";
+                               } 
+        
+                               if($_GET['preco'] == '200-acima') {
+                                $sqlprice .= " (produto.preco > 20000)";
+                               }
+                            
+                            
+                            $sql = "SELECT * FROM produto 
+                            WHERE produto.id_categoria = $numberidcategoryurl AND $sqlprice";
+        
+                            
+                        } else {
                     
-                } else {
 
                     $sql = "SELECT * FROM produto WHERE produto.id_categoria = '$numberidcategoryurl'";
                 }
                 $products = $mysqli->query($sql);
 
                 ?>
-
-
-
-                    <?php
-                       if($price == 'price1') {
-                        $sqlprice = "SELECT * FROM produto 
-                        WHERE produto.id_categoria = $numberidcategoryurl AND (produto.preco <= 10000)";
-
-                       }
-
-                       if($price == 'price2') {
-                        $sqlprice = "SELECT * FROM produto 
-                        WHERE produto.id_categoria = $numberidcategoryurl AND (produto.preco > 10000) AND (produto.preco <= 20000)";
-
-                       }
-
-                       if($price == 'price3') {
-                        $sqlprice = "SELECT * FROM produto 
-                        WHERE produto.id_categoria = $numberidcategoryurl AND (produto.preco > 20000)";
-
-                       }
-
-                       ?>
 
                 <?php foreach ($products as $product) : ?>
                     <div class="col-6 col-xl-3 ">
