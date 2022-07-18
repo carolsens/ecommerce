@@ -137,7 +137,7 @@ include($adminBaseDir . DIRECTORY_SEPARATOR . 'produtos/_functions_utils.inc.php
                         <img class="gallery-products-one__img" src="<?php echo BASE_URL_PRODUTO_FRONTEND . "/" . $product['foto'] ?>">
                         <h3><?php echo $product['nome'] ?></h3>
                         <h4>R$ <?php echo moneyFormat($product['preco']) ?></h4>
-                        <h5>ou 12x de R$ 15,59</h5>
+                        <h5>ou 12x de R$ <?php echo payby($product['preco']) ?></h5>
                         <?php if (!empty($product['tarja'])) : ?>
                             <div class="gallery-products-one__tag">
                                 <?php echo $product['tarja'] ?>
@@ -177,7 +177,7 @@ include($adminBaseDir . DIRECTORY_SEPARATOR . 'produtos/_functions_utils.inc.php
                         <h3><?php echo $product['nome'] ?></h3>
                         <h6><s>R$ <?php echo moneyFormat($product['preco']) ?></h6></s>
                         <h4>R$ <?php echo moneyFormat($product['precopromocional']) ?></h4>
-                        <h5>ou 12x de R$ 15,59</h5>
+                        <h5>ou 12x de R$ <?php echo payby($product['preco']) ?></h5>
                         <?php if (!empty($product['tarja'])) : ?>
                             <div class="gallery-products-two__tag">
                                 <?php echo $product['tarja'] ?>
@@ -207,7 +207,7 @@ include($adminBaseDir . DIRECTORY_SEPARATOR . 'produtos/_functions_utils.inc.php
                         <img class="gallery-products-three__img" src="<?php echo BASE_URL_PRODUTO_FRONTEND . "/" . $product['foto'] ?>">
                         <h3><?php echo $product['nome'] ?></h3>
                         <h4>R$ <?php echo moneyFormat($product['preco']) ?></h4>
-                        <h5>ou 12x de R$ 15,59</h5>
+                        <h5>ou 12x de R$ <?php echo payby($product['preco']) ?></h5>
                         <?php if (!empty($product['tarja'])) : ?>
                             <div class="gallery-products-three__tag">
                                 <?php echo $product['tarja'] ?>

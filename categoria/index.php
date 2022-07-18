@@ -66,9 +66,9 @@ endforeach;
                 foreach ($menufiltros as $menufiltro) :
 
                     $idfiltro = $menufiltro['id'] ?>
-                    <div class="col-2">
+                    <div class="col-3 col-md-1">
                         <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton<?= $idfiltro ?>" data-bs-toggle="dropdown" aria-expanded="false" value="<?= $menufiltro['id'] ?>">
+                            <button class="btn btn-secondary dropdown-toggle filters__btn" type="button" id="dropdownMenuButton<?= $idfiltro ?>" data-bs-toggle="dropdown" aria-expanded="false" value="<?= $menufiltro['id'] ?>">
                                 <?= $menufiltro['nome'] ?>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton<?= $idfiltro ?>">
@@ -103,22 +103,24 @@ endforeach;
                     </div>
                 <?php endforeach ?>
                       
-                
-                <div class="col-2">
+
+                <div class="col-3 col-md-1">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            Preço
+                        <button class="btn btn-secondary dropdown-toggle filters__btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            preço
                         </button>
                         
-
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" href="<?= generateURLfilter($filepath, $arrayurl, '0-100', true) ?>">R$ 0,00 - R$ 100,00</a></li>
                             <li><a class="dropdown-item" href="<?= generateURLfilter($filepath, $arrayurl, '100-200', true) ?>">R$ 100,00 - R$ 200,00</a></li>
-                            <li><a class="dropdown-item" href="<?= generateURLfilter($filepath, $arrayurl, '200-acima', true) ?>">Acima de R$ 200,00</a></li>
-
-                          
+                            <li><a class="dropdown-item" href="<?= generateURLfilter($filepath, $arrayurl, '200-acima', true) ?>">Acima de R$ 200,00</a></li>   
                         </ul>
                     </div>
+                </div>
+                <div class="col-6 col-md-2">
+                        <button class="btn btn-secondary  filters__btn" type="button" >
+                            <a href="<?= BASE_URL_CATEGORIA . '/' . $categoryname ?>"> limpar filtros</a>
+                        </button>  
                 </div>
             </div>
         </div>
@@ -207,7 +209,7 @@ endforeach;
                         <img class="img-fluid products__img" src="<?php echo BASE_URL_PRODUTO_FRONTEND . "/" . $product['foto'] ?>">
                         <h3><?php echo $product['nome'] ?></h3>
                         <h4>R$ <?php echo moneyFormat($product['preco']) ?></h4>
-                        <h5>ou 12x de R$ 15,59</h5>
+                        <h5>ou 12x de R$ <?php echo payby($product['preco']) ?></h5>
 
                     </div>
                 <?php endforeach; ?>

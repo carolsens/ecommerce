@@ -19,3 +19,8 @@ function moneyFormat($preco)
 {
       return number_format($preco/100, 2, ',', '.');
 }
+
+function payby($preco)
+{
+      return number_format(($preco/100)/12, 2, ',', '.');
+}

@@ -7,3 +7,38 @@
     max-width: 100%;
     margin-top: 20px;
 }
+
+.filters__btn {
+    background-color: #fff;
+    border: #fff;
+    color: #454545;
+}
+
+ .filters .btn-secondary:hover {
+    background-color: #fff;
+    border: #fff;
+    color: #ff99cc;
+}
+
+.filters .btn-secondary:active {
+    background-color: #fff;
+    border: #fff;
+    color: #ff99cc;
+}
+
+.filters .btn-secondary:focus {
+    background-color: #fff;
+    border: #fff;
+    color: #ff99cc;
+    box-shadow: none;
+}
+
+.filters {
+    margin-top: 20px;
+}
+
+.filters__btn a {
+    background-color: #fff;
+    border: #fff;
+    color: #454545;
+}
