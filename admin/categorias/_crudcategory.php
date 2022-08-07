@@ -10,7 +10,7 @@ switch ($_REQUEST["action"]) {
         
         $sql = "INSERT INTO categoria (nome, ativo) VALUE ('{$nome}', '{$ativo}')";
 
-        $res = $mysqli->query($sql);
+        $res = ->query($sql);
 
         if($res==true){
             print "<script>alert('Cadastro realizado com sucesso');</script>";

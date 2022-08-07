@@ -94,3 +94,10 @@
     max-width: 10px;
   }
  
+.right_col__titleChart {
+  text-align: center;
+}
+
+.right_col__charts {
+  display: grid;
+}

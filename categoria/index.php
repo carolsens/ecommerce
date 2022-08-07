@@ -66,7 +66,7 @@ endforeach;
                 foreach ($menufiltros as $menufiltro) :
 
                     $idfiltro = $menufiltro['id'] ?>
-                    <div class="col-3 col-md-1">
+                    <div class="col-6 col-md-2">
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle filters__btn" type="button" id="dropdownMenuButton<?= $idfiltro ?>" data-bs-toggle="dropdown" aria-expanded="false" value="<?= $menufiltro['id'] ?>">
                                 <?= $menufiltro['nome'] ?>
@@ -104,7 +104,7 @@ endforeach;
                 <?php endforeach ?>
                       
 
-                <div class="col-3 col-md-1">
+                <div class="col-6 col-md-2">
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle filters__btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             preço
